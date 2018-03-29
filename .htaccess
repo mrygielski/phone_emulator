@@ -1,0 +1,1223 @@
+ErrorDocument 400 /errors/server_error.php?info=400
+ErrorDocument 401 /errors/server_error.php?info=401
+ErrorDocument 403 /errors/server_error.php?info=403
+ErrorDocument 404 /errors/server_error.php?info=404
+ErrorDocument 500 /errors/server_error.php?info=500
+ErrorDocument 503 /errors/server_error.php?info=503
+
+#Options FollowSymLinks
+RewriteEngine on
+#RewriteCond %{HTTP_REFERER} !^$
+#RewriteCond %{REQUEST_FILENAME} !-f #po to aby serwer wysylal obrazki a nie skrypt
+#RewriteBase /manager
+
+#SecFilterEngine Off
+#SecFilterScanPOST Off
+#SecRuleEngine On
+
+#certyfikat HTTPS
+#RewriteCond %{SERVER_PORT} 80
+#RewriteRule ^(.*)$ https://totalfootballmanager.net/$1 [R=301,L]
+
+#RewriteCond %{HTTPS} off
+#RewriteRule (.*) https://%{HTTP_HOST}%{REQUEST_URI}
+
+###otwarty serwis
+#RewriteCond %{HTTP_HOST} ^totalfootballmanager.net
+#RewriteCond %{HTTP_HOST} ^www.totalfootballmanager.net
+#RewriteRule (.*) http://www.totalfootballmanager.net/$1 [R=301,L]
+
+###przerwa techniczna
+#RewriteCond %{HTTP_HOST} ^totalfootballmanager\.net$ [OR]
+#RewriteCond %{HTTP_HOST} ^www\.totalfootballmanager\.net$
+#RewriteCond %{REQUEST_URI} !^/__break_update/
+#RewriteRule (.*) /__break_update/$1
+ 
+########## Spambotlista
+ 
+Deny from 114.79.
+
+
+Deny from 195.239.212.118
+Deny from 213.8.123.251
+Deny from 5.164.216.85
+Deny from 5.39.72.123
+Deny from 176.31.218.198
+
+## black list blog ip
+
+Deny from 62.141.123.106
+Deny from 195.138.195.241
+Deny from 58.229.121.56
+Deny from 119.254.90.18
+Deny from 157.238.208.1
+Deny from 50.23.179.2
+Deny from 89.35.116.66
+Deny from 67.125.30.140
+Deny from 218.45.183.15
+Deny from 207.242.93.140
+Deny from 130.104.5.100
+Deny from 46.29.194.130
+Deny from 50.63.184.184
+Deny from 94.23.1.28
+Deny from 217.158.48.175
+Deny from 109.109.212.218
+Deny from 114.108.176.233
+Deny from 212.179.142.194
+Deny from 201.81.169.147
+Deny from 190.150.135.254
+Deny from 195.35.66.157
+Deny from 113.108.92.104
+Deny from 86.30.198.229
+Deny from 193.61.104.66
+Deny from 200.241.34.98
+Deny from 217.20.246.1
+Deny from 77.28.14.34
+Deny from 207.162.87.189
+Deny from 217.165.236.110
+Deny from 94.23.1.28
+Deny from 208.70.142.34
+Deny from 193.159.231.132
+Deny from 109.10.142.216
+Deny from 193.61.245.253 	
+Deny from 217.165.232.253
+Deny from 199.19.250.13
+Deny from 50.57.164.165
+Deny from 46.171.117.137
+Deny from 5.248.85.138
+
+ 
+##########  
+
+##
+
+#php_value    magic_quotes_gpc off
+#php_value    magic_quotes_runtime off 
+
+RewriteRule ^HarlemShake$ harlem_shake/index.php [QSA]
+
+########################################################################################## BEZ DEKLARACJI SERWERA
+
+RewriteRule ^sporty$ index.php?action=action_torunskiesporty2013&tab=menu1 [QSA]
+RewriteRule ^sporty/$ index.php?action=action_torunskiesporty2013&tab=menu1 [QSA]
+RewriteRule ^sporty/awixracingarena$ index.php?action=action_torunskiesporty2013&tab=menu2 [QSA]
+RewriteRule ^sporty/awixracingarena/$ index.php?action=action_torunskiesporty2013&tab=menu2 [QSA]
+RewriteRule ^sporty/totalfootballmanager$ index.php?action=action_torunskiesporty2013&tab=menu3 [QSA]
+RewriteRule ^sporty/totalfootballmanager/$ index.php?action=action_torunskiesporty2013&tab=menu3 [QSA]
+RewriteRule ^sporty/rule$ index.php?action=action_torunskiesporty2013&tab=menu4 [QSA]
+RewriteRule ^sporty/rule/$ index.php?action=action_torunskiesporty2013&tab=menu4 [QSA]
+
+RewriteRule ^([A-Z]+)/sporty$ index.php?LANG=$1&action=action_torunskiesporty2013&tab=menu1 [QSA]
+RewriteRule ^([A-Z]+)/sporty/$ index.php?LANG=$1&action=action_torunskiesporty2013&tab=menu1 [QSA]
+RewriteRule ^([A-Z]+)/sporty/awixracingarena$ index.php?LANG=$1&action=action_torunskiesporty2013&tab=menu2 [QSA]
+RewriteRule ^([A-Z]+)/sporty/awixracingarena/$ index.php?LANG=$1&action=action_torunskiesporty2013&tab=menu2 [QSA]
+RewriteRule ^([A-Z]+)/sporty/totalfootballmanager$ index.php?LANG=$1&action=action_torunskiesporty2013&tab=menu3 [QSA]
+RewriteRule ^([A-Z]+)/sporty/totalfootballmanager/$ index.php?LANG=$1&action=action_torunskiesporty2013&tab=menu3 [QSA]
+RewriteRule ^([A-Z]+)/sporty/rule$ index.php?LANG=$1&action=action_torunskiesporty2013&tab=menu4 [QSA]
+RewriteRule ^([A-Z]+)/sporty/rule/$ index.php?LANG=$1&action=action_torunskiesporty2013&tab=menu4 [QSA]
+
+RewriteRule ^[a-zA-Z]+([0-9]+)/([A-Z]+)/sporty$ index.php?SERV=$1&LANG=$2&action=action_torunskiesporty2013&tab=menu1 [QSA]
+RewriteRule ^[a-zA-Z]+([0-9]+)/([A-Z]+)/sporty/$ index.php?SERV=$1&LANG=$2&action=action_torunskiesporty2013&tab=menu1 [QSA]
+RewriteRule ^[a-zA-Z]+([0-9]+)/([A-Z]+)/sporty/awixracingarena$ index.php?SERV=$1&LANG=$2&action=action_torunskiesporty2013&tab=menu2 [QSA]
+RewriteRule ^[a-zA-Z]+([0-9]+)/([A-Z]+)/sporty/awixracingarena/$ index.php?SERV=$1&LANG=$2&action=action_torunskiesporty2013&tab=menu2 [QSA]
+RewriteRule ^[a-zA-Z]+([0-9]+)/([A-Z]+)/sporty/totalfootballmanager$ index.php?SERV=$1&LANG=$2&action=action_torunskiesporty2013&tab=menu3 [QSA]
+RewriteRule ^[a-zA-Z]+([0-9]+)/([A-Z]+)/sporty/totalfootballmanager/$ index.php?SERV=$1&LANG=$2&action=action_torunskiesporty2013&tab=menu3 [QSA]
+RewriteRule ^[a-zA-Z]+([0-9]+)/([A-Z]+)/sporty/rule$ index.php?SERV=$1&LANG=$2&action=action_torunskiesporty2013&tab=menu4 [QSA]
+RewriteRule ^[a-zA-Z]+([0-9]+)/([A-Z]+)/sporty/rule/$ index.php?SERV=$1&LANG=$2&action=action_torunskiesporty2013&tab=menu4 [QSA]
+
+
+
+RewriteRule ^([A-Z]+)$ index.php?LANG=$1 [QSA]
+RewriteRule ^([A-Z]+)/$ index.php?LANG=$1 [QSA]
+
+##### REJESTRACJA - BEGIN
+RewriteRule ^([A-Z]+)/register$ index.php?action=register&LANG=$1 [QSA]
+RewriteRule ^([A-Z]+)/register/$ index.php?action=register&LANG=$1 [QSA]
+RewriteRule ^([A-Z]+)/register/([a-z0-9_]+)$ index.php?action=register_active&LANG=$1&ACTIVATION=$2 [QSA]
+RewriteRule ^([A-Z]+)/register/share/([a-z0-9_]+)$ index.php?action=register&LANG=$1&SHARE_KEY=$2 [QSA]
+RewriteRule ^([A-Z]+)/register/([a-z0-9_]+),([a-z0-9_]+)$ index.php?action=register_active&LANG=$1&ACTIVATION=$2&SHARE_KEY=$3 [QSA]
+RewriteRule ^([A-Z]+)/register/facebook/$ index.php?action=register_facebook&LANG=$1 [QSA]
+##### REJESTRACJA - END
+
+##### LOGOWANIE - BEGIN
+RewriteRule ^([A-Z]+)/login$ index.php?action=login&LANG=$1 [QSA]
+RewriteRule ^([A-Z]+)/login/$ index.php?action=login&LANG=$1 [QSA]
+RewriteRule ^([A-Z]+)/login/error$ index.php?action=login&login_error&LANG=$1 [QSA]
+RewriteRule ^([A-Z]+)/login/error/$ index.php?action=login&login_error&LANG=$1 [QSA]
+RewriteRule ^([A-Z]+)/login/ban$ index.php?action=login&login_ban&LANG=$1 [QSA]
+RewriteRule ^([A-Z]+)/login/ban/$ index.php?action=login&login_ban&LANG=$1 [QSA]
+RewriteRule ^([A-Z]+)/login/blocked index.php?action=login&login_blocked&LANG=$1 [QSA]
+RewriteRule ^([A-Z]+)/login/blocked/$ index.php?action=login&login_blocked&LANG=$1 [QSA]
+RewriteRule ^([A-Z]+)/password_recovery$ index.php?action=password_recovery&LANG=$1 [QSA]
+RewriteRule ^([A-Z]+)/password_recovery/$ index.php?action=password_recovery&LANG=$1 [QSA]
+RewriteRule ^([A-Z]+)/password_recovery/([a-z0-9_]+)$ index.php?action=password_recovery&LANG=$1&get_recovery=$2 [QSA]
+##### LOGOWANIE - END
+
+##### FORUM - BEGIN
+#link globalny
+RewriteRule ^([A-Z]+)/forum$ index.php?LANG=$1&PAGE_FORUM [QSA]
+RewriteRule ^([A-Z]+)/forum/$ index.php?LANG=$1&PAGE_FORUM [QSA]
+
+
+RewriteRule ^([A-Z]+)/forum/dodaj-dzial-glowny$ index.php?LANG=$1&PAGE_FORUM&DodajDzialGlowny [QSA]
+RewriteRule ^([A-Z]+)/forum/$ index.php?LANG=$1&PAGE_FORUM&SyS=forum [QSA]
+
+RewriteRule ^([A-Z]+)/forum/([0-9]+),([0-9]+),([0-9]+)/reply,quote/$ index.php?LANG=$1&pd=$2&postNEW=$3&quote=$4&replyAdd&PAGE_FORUM [QSA]
+RewriteRule ^([A-Z]+)/forum/([0-9]+),([0-9]+),([0-9]+)/reply,edit/$ index.php?LANG=$1&pd=$2&postNEW=$3&quote=$4&replyAdd&PAGE_FORUM [QSA]
+RewriteRule ^([A-Z]+)/forum/([0-9]+),([0-9]+),([0-9]+)/edit/$ index.php?LANG=$1&pd=$2&postNEW=$3&id=$4&editAdd&PAGE_FORUM [QSA]
+RewriteRule ^([A-Z]+)/forum/([0-9]+),([0-9]+),([0-9]+)/del/$ index.php?LANG=$1&pd=$2&postNEW=$3&id=$4&delete&PAGE_FORUM [QSA]
+RewriteRule ^([A-Z]+)/forum/([0-9]+),([0-9]+),([0-9]+)/$ index.php?LANG=$1&pd=$2&postNEW=$3&page=$4&PAGE_FORUM [QSA]
+RewriteRule ^([A-Z]+)/forum/([0-9]+),([0-9]+),([0-9]+)$ index.php?LANG=$1&pd=$2&postNEW=$3&page=$4&PAGE_FORUM [QSA]
+RewriteRule ^([A-Z]+)/forum/([0-9]+),([0-9]+)/$ index.php?LANG=$1&pd=$2&postNEW=$3&PAGE_FORUM [QSA]
+RewriteRule ^([A-Z]+)/forum/([0-9]+),([0-9]+)$ index.php?LANG=$1&pd=$2&postNEW=$3&PAGE_FORUM [QSA]
+RewriteRule ^([A-Z]+)/forum/([0-9]+),([0-9]+)/off/$ index.php?LANG=$1&pd=$2&postNEW=$3&zablokuj&PAGE_FORUM [QSA]
+RewriteRule ^([A-Z]+)/forum/([0-9]+),([0-9]+)/on/$ index.php?LANG=$1&pd=$2&postNEW=$3&odblokuj&PAGE_FORUM [QSA]
+
+RewriteRule ^([A-Z]+)/forum/([0-9]+),([0-9]+)/unpin/$ index.php?LANG=$1&pd=$2&postNEW=$3&przypnij&PAGE_FORUM [QSA]
+RewriteRule ^([A-Z]+)/forum/([0-9]+),([0-9]+)/pin/$ index.php?LANG=$1&pd=$2&postNEW=$3&odepnij&PAGE_FORUM [QSA]
+
+RewriteRule ^([A-Z]+)/forum/([0-9]+),([0-9]+)/reply/$ index.php?LANG=$1&pd=$2&postNEW=$3&replyAdd&PAGE_FORUM [QSA]
+RewriteRule ^([A-Z]+)/forum/([0-9]+),([0-9]+)/p/$ index.php?LANG=$1&pd=$2&page=$3&PAGE_FORUM [QSA]
+RewriteRule ^([A-Z]+)/forum/([0-9]+)/new/$ index.php?LANG=$1&pd=$2&newAdd&PAGE_FORUM [QSA]
+RewriteRule ^([A-Z]+)/forum/([0-9]+)/$ index.php?LANG=$1&pd=$2&PAGE_FORUM [QSA]
+
+RewriteRule ^([A-Z]+)/forum/([0-9]+),([0-9]+),([0-9]+)/[a-z0-9\-]+/$ index.php?LANG=$1&pd=$2&postNEW=$3&page=$4&PAGE_FORUM [QSA]
+RewriteRule ^([A-Z]+)/forum/([0-9]+),([0-9]+)/[a-z0-9\-]+/$ index.php?LANG=$1&PAGE_FORUM&pd=$2&postNEW=$3 [QSA]
+
+RewriteRule ^([A-Z]+)/forum/([0-9]+),([0-9]+)/[a-z0-9\-]+/$ index.php?LANG=$1&pd=$2&page=$3&PAGE_FORUM [QSA]
+
+
+RewriteRule ^([A-Z]+)/forum/([0-9]+)/[a-z0-9\-]+/$ index.php?pd=$2&LANG=$1&PAGE_FORUM [QSA]
+
+
+RewriteRule ^([A-Z]+)/forum/new-messages/$ index.php?LANG=$1&nowePosty&PAGE_FORUM [QSA]
+RewriteRule ^([A-Z]+)/forum/unanswered-posts/$ index.php?LANG=$1&postyBezOdpowiedzi&PAGE_FORUM [QSA]
+RewriteRule ^([A-Z]+)/forum/popular-posts/$ index.php?LANG=$1&popularnePosty&PAGE_FORUM [QSA]
+
+##### FORUM - END
+
+##### COMPETITIONS - BEGIN
+
+RewriteRule ^[a-zA-Z]+([0-9]+)/([A-Z]+)/competitions$ index.php?SERV=$1&action=game_competitions&LANG=$2 [QSA]
+RewriteRule ^[a-zA-Z]+([0-9]+)/([A-Z]+)/competitions/$ index.php?SERV=$1&action=game_competitions&LANG=$2 [QSA]
+RewriteRule ^[a-zA-Z]+([0-9]+)/([A-Z]+)/competitions/completed$ index.php?SERV=$1&action=game_competitions&tab=list_completed&LANG=$2 [QSA]
+RewriteRule ^[a-zA-Z]+([0-9]+)/([A-Z]+)/competitions/completed/([0-9]+)/more$ index.php?SERV=$1&action=game_competitions&tab=list_completed&LANG=$2&GET_COMPETITION=$3&GetMore [QSA]
+
+RewriteRule ^[a-zA-Z]+([0-9]+)/([A-Z]+)/competitions/completed/([0-9]+)/more/details$ index.php?SERV=$1&action=game_competitions&tab=list_completed&LANG=$2&GET_COMPETITION=$3&GetMoreDetails [QSA]
+
+RewriteRule ^[a-zA-Z]+([0-9]+)/([A-Z]+)/competitions/rule$ index.php?SERV=$1&action=game_competitions&tab=list_rule&LANG=$2 [QSA]
+RewriteRule ^[a-zA-Z]+([0-9]+)/([A-Z]+)/competitions/([0-9]+)/more$ index.php?SERV=$1&action=game_competitions&LANG=$2&GET_COMPETITION=$3&GetMore [QSA]
+RewriteRule ^[a-zA-Z]+([0-9]+)/([A-Z]+)/competitions/([0-9]+)/more/details$ index.php?SERV=$1&action=game_competitions&LANG=$2&GET_COMPETITION=$3&GetMoreDetails [QSA]
+RewriteRule ^[a-zA-Z]+([0-9]+)/([A-Z]+)/competitions/([0-9]+)/signup$ index.php?SERV=$1&action=game_competitions&LANG=$2&GET_COMPETITION=$3&SignUP [QSA]
+RewriteRule ^[a-zA-Z]+([0-9]+)/([A-Z]+)/competitions/([0-9]+)/signup/$ index.php?SERV=$1&action=game_competitions&LANG=$2&GET_COMPETITION=$3&SignUP [QSA]
+RewriteRule ^[a-zA-Z]+([0-9]+)/([A-Z]+)/competitions/([0-9]+)/signup/done$ index.php?SERV=$1&action=game_competitions&LANG=$2&GET_COMPETITION=$3&SignUP&optionDone [QSA]
+RewriteRule ^[a-zA-Z]+([0-9]+)/([A-Z]+)/competitions/([0-9]+)/signup/error$ index.php?SERV=$1&action=game_competitions&LANG=$2&GET_COMPETITION=$3&SignUP&optionError [QSA]
+RewriteRule ^[a-zA-Z]+([0-9]+)/([A-Z]+)/competitions/([0-9]+)/activate$ index.php?SERV=$1&action=game_competitions&LANG=$2&GET_COMPETITION=$3&CompetitionActivate [QSA]
+RewriteRule ^[a-zA-Z]+([0-9]+)/([A-Z]+)/competitions/([0-9]+)/activate/warning$ index.php?SERV=$1&action=game_competitions&LANG=$2&GET_COMPETITION=$3&CompetitionActivate&optionWarning [QSA]
+RewriteRule ^[a-zA-Z]+([0-9]+)/([A-Z]+)/competitions/([0-9]+)/activate/error$ index.php?SERV=$1&action=game_competitions&LANG=$2&GET_COMPETITION=$3&CompetitionActivate&optionError [QSA]
+RewriteRule ^[a-zA-Z]+([0-9]+)/([A-Z]+)/competitions/([0-9]+)/activate/done$ index.php?SERV=$1&action=game_competitions&LANG=$2&GET_COMPETITION=$3&CompetitionActivate&optionDone [QSA]
+RewriteRule ^[a-zA-Z]+([0-9]+)/([A-Z]+)/competitions/([0-9]+)/vote/([0-9]+)$ index.php?SERV=$1&action=game_competitions&LANG=$2&GET_COMPETITION=$3&GetMore&voteOption=$4 [QSA]
+
+##### COMPETITIONS - END
+
+########################################################################################## Z DEKLARACJA SERWERA
+
+
+
+RewriteRule ^[a-zA-Z]+([0-9]+)/([A-Z]+)$ index.php?SERV=$1&LANG=$2 [QSA]
+RewriteRule ^[a-zA-Z]+([0-9]+)/([A-Z]+)/$ index.php?SERV=$1&LANG=$2 [QSA]
+
+RewriteRule ^([A-Z]+)/RSS ajax/rss_generator.php?LANG=$1 [QSA]
+RewriteRule ^([A-Z]+)/RSS/$ ajax/rss_generator.php?LANG=$1 [QSA]
+RewriteRule ^([A-Z]+)/forum/RSS$ ajax/rss_forum_generator.php?LANG=$1 [QSA]
+RewriteRule ^([A-Z]+)/forum/RSS/$ ajax/rss_forum_generator.php?LANG=$1 [QSA]
+
+
+##### UZYTKOWNICY - BEGIN
+RewriteRule ^[a-zA-Z]+([0-9]+)/([A-Z]+)/invite/user/accept/([0-9]+)$ index.php?SERV=$1&action=user_invite_accept&LANG=$2&GET_ID=$3 [QSA]
+RewriteRule ^[a-zA-Z]+([0-9]+)/([A-Z]+)/invite/user/accept/([0-9]+)/$ index.php?SERV=$1&action=user_invite_accept&LANG=$2&GET_ID=$3 [QSA]
+RewriteRule ^[a-zA-Z]+([0-9]+)/([A-Z]+)/invite/user/dismiss/([0-9]+)$ index.php?SERV=$1&action=user_invite_dismiss&LANG=$2&GET_ID=$3 [QSA]
+RewriteRule ^[a-zA-Z]+([0-9]+)/([A-Z]+)/invite/user/dismiss/([0-9]+)/$ index.php?SERV=$1&action=user_invite_dismiss&LANG=$2&GET_ID=$3 [QSA]
+RewriteRule ^[a-zA-Z]+([0-9]+)/([A-Z]+)/invite/user/([0-9]+)$ index.php?SERV=$1&action=user_invite&LANG=$2&GET_USER_ID=$3 [QSA]
+RewriteRule ^[a-zA-Z]+([0-9]+)/([A-Z]+)/invite/user/([0-9]+)/$ index.php?SERV=$1&action=user_invite&LANG=$2&GET_USER_ID=$3 [QSA]
+RewriteRule ^[a-zA-Z]+([0-9]+)/([A-Z]+)/user/([0-9]+)$ index.php?SERV=$1&action=user_view&LANG=$2&GET_USER_ID=$3 [QSA]
+RewriteRule ^[a-zA-Z]+([0-9]+)/([A-Z]+)/user/([0-9]+)/$ index.php?SERV=$1&action=user_view&LANG=$2&GET_USER_ID=$3 [QSA]
+##### UZYTKOWNICY - END
+
+##### TURNIEJE - BEGIN
+RewriteRule ^[a-zA-Z]+([0-9]+)/([A-Z]+)/tournament/([0-9]+)$ index.php?SERV=$1&action=tournament_view&LANG=$2&tab=start&GET_TOURNAMENT_ID=$3 [QSA]
+RewriteRule ^[a-zA-Z]+([0-9]+)/([A-Z]+)/tournament/([0-9]+)/playoff$ index.php?SERV=$1&action=tournament_view&LANG=$2&tab=playoff&GET_TOURNAMENT_ID=$3&otherOption=standard [QSA]
+RewriteRule ^[a-zA-Z]+([0-9]+)/([A-Z]+)/tournament/([0-9]+)/playoff/standard$ index.php?SERV=$1&action=tournament_view&LANG=$2&tab=playoff&GET_TOURNAMENT_ID=$3&otherOption=standard [QSA]
+RewriteRule ^[a-zA-Z]+([0-9]+)/([A-Z]+)/tournament/([0-9]+)/playoff/list$ index.php?SERV=$1&action=tournament_view&LANG=$2&tab=playoff&GET_TOURNAMENT_ID=$3&otherOption=list [QSA]
+RewriteRule ^[a-zA-Z]+([0-9]+)/([A-Z]+)/tournament/([0-9]+)/group/([0-9]+)$ index.php?SERV=$1&action=tournament_view&LANG=$2&tab=start&GET_TOURNAMENT_ID=$3&set_group=$4 [QSA]
+RewriteRule ^[a-zA-Z]+([0-9]+)/([A-Z]+)/tournament/([0-9]+)/informations$ index.php?SERV=$1&action=tournament_view&LANG=$2&tab=info&GET_TOURNAMENT_ID=$3 [QSA]
+
+RewriteRule ^[a-zA-Z]+([0-9]+)/([A-Z]+)/tournament/([0-9]+)/join$ index.php?SERV=$1&action=tournament_view&LANG=$2&tab=start&GET_TOURNAMENT_ID=$3&ADD_USER [QSA]
+RewriteRule ^[a-zA-Z]+([0-9]+)/([A-Z]+)/tournament/([0-9]+)/join/done$ index.php?SERV=$1&action=tournament_view&LANG=$2&tab=start&GET_TOURNAMENT_ID=$3&info_join_done [QSA]
+RewriteRule ^[a-zA-Z]+([0-9]+)/([A-Z]+)/tournament/([0-9]+)/join/error$ index.php?SERV=$1&action=tournament_view&LANG=$2&tab=start&GET_TOURNAMENT_ID=$3&info_join_error [QSA]
+RewriteRule ^[a-zA-Z]+([0-9]+)/([A-Z]+)/tournament/([0-9]+)/join/warning$ index.php?SERV=$1&action=tournament_view&LANG=$2&tab=start&GET_TOURNAMENT_ID=$3&info_join_warning [QSA]
+RewriteRule ^[a-zA-Z]+([0-9]+)/([A-Z]+)/tournament/([0-9]+)/join/warning/2$ index.php?SERV=$1&action=tournament_view&LANG=$2&tab=start&GET_TOURNAMENT_ID=$3&info_join_warning_2 [QSA]
+RewriteRule ^[a-zA-Z]+([0-9]+)/([A-Z]+)/tournament/([0-9]+)/resign$ index.php?SERV=$1&action=tournament_view&LANG=$2&tab=start&GET_TOURNAMENT_ID=$3&REMOVE_USER [QSA]
+RewriteRule ^[a-zA-Z]+([0-9]+)/([A-Z]+)/tournament/([0-9]+)/resign/done$ index.php?SERV=$1&action=tournament_view&LANG=$2&tab=start&GET_TOURNAMENT_ID=$3&info_resign_done [QSA]
+
+RewriteRule ^[a-zA-Z]+([0-9]+)/([A-Z]+)/tournament/([0-9]+)/fixtures$ index.php?SERV=$1&action=tournament_view&LANG=$2&tab=fixtures&GET_TOURNAMENT_ID=$3 [QSA]
+RewriteRule ^[a-zA-Z]+([0-9]+)/([A-Z]+)/tournament/([0-9]+)/statistics$ index.php?SERV=$1&action=tournament_view&LANG=$2&tab=statistics&GET_TOURNAMENT_ID=$3 [QSA]
+
+RewriteRule ^[a-zA-Z]+([0-9]+)/([A-Z]+)/tournament/([0-9]+)/statistics/goalscorers$ index.php?SERV=$1&action=tournament_view&LANG=$2&tab=statistics&option=goalscorers&GET_TOURNAMENT_ID=$3 [QSA]
+RewriteRule ^[a-zA-Z]+([0-9]+)/([A-Z]+)/tournament/([0-9]+)/statistics/goalscorers/$ index.php?SERV=$1&action=tournament_view&LANG=$2&tab=statistics&option=goalscorers&GET_TOURNAMENT_ID=$3 [QSA]
+RewriteRule ^[a-zA-Z]+([0-9]+)/([A-Z]+)/tournament/([0-9]+)/statistics/goalscorers/([0-9]+)$ index.php?SERV=$1&action=tournament_view&LANG=$2&tab=statistics&option=goalscorers&GET_TOURNAMENT_ID=$3&page=$4 [QSA]
+RewriteRule ^[a-zA-Z]+([0-9]+)/([A-Z]+)/tournament/([0-9]+)/statistics/goalscorers/([0-9]+)/$ index.php?SERV=$1&action=tournament_view&LANG=$2&tab=statistics&option=goalscorers&GET_TOURNAMENT_ID=$3&page=$4 [QSA]
+
+RewriteRule ^[a-zA-Z]+([0-9]+)/([A-Z]+)/tournament/([0-9]+)/statistics/yellowcards$ index.php?SERV=$1&action=tournament_view&LANG=$2&tab=statistics&option=yellowcards&GET_TOURNAMENT_ID=$3 [QSA]
+RewriteRule ^[a-zA-Z]+([0-9]+)/([A-Z]+)/tournament/([0-9]+)/statistics/yellowcards/$ index.php?SERV=$1&action=tournament_view&LANG=$2&tab=statistics&option=yellowcards&GET_TOURNAMENT_ID=$3 [QSA]
+RewriteRule ^[a-zA-Z]+([0-9]+)/([A-Z]+)/tournament/([0-9]+)/statistics/yellowcards/([0-9]+)$ index.php?SERV=$1&action=tournament_view&LANG=$2&tab=statistics&option=yellowcards&GET_TOURNAMENT_ID=$3&page=$4 [QSA]
+RewriteRule ^[a-zA-Z]+([0-9]+)/([A-Z]+)/tournament/([0-9]+)/statistics/yellowcards/([0-9]+)/$ index.php?SERV=$1&action=tournament_view&LANG=$2&tab=statistics&option=yellowcards&GET_TOURNAMENT_ID=$3&page=$4 [QSA]
+
+RewriteRule ^[a-zA-Z]+([0-9]+)/([A-Z]+)/tournament/([0-9]+)/statistics/redcards$ index.php?SERV=$1&action=tournament_view&LANG=$2&tab=statistics&option=redcards&GET_TOURNAMENT_ID=$3 [QSA]
+RewriteRule ^[a-zA-Z]+([0-9]+)/([A-Z]+)/tournament/([0-9]+)/statistics/redcards/$ index.php?SERV=$1&action=tournament_view&LANG=$2&tab=statistics&option=redcards&GET_TOURNAMENT_ID=$3 [QSA]
+RewriteRule ^[a-zA-Z]+([0-9]+)/([A-Z]+)/tournament/([0-9]+)/statistics/redcards/([0-9]+)$ index.php?SERV=$1&action=tournament_view&LANG=$2&tab=statistics&option=redcards&GET_TOURNAMENT_ID=$3&page=$4 [QSA]
+RewriteRule ^[a-zA-Z]+([0-9]+)/([A-Z]+)/tournament/([0-9]+)/statistics/redcards/([0-9]+)/$ index.php?SERV=$1&action=tournament_view&LANG=$2&tab=statistics&option=redcards&GET_TOURNAMENT_ID=$3&page=$4 [QSA]
+
+RewriteRule ^[a-zA-Z]+([0-9]+)/([A-Z]+)/tournament/([0-9]+)/statistics/assists$ index.php?SERV=$1&action=tournament_view&LANG=$2&tab=statistics&option=assists&GET_TOURNAMENT_ID=$3 [QSA]
+RewriteRule ^[a-zA-Z]+([0-9]+)/([A-Z]+)/tournament/([0-9]+)/statistics/assists/$ index.php?SERV=$1&action=tournament_view&LANG=$2&tab=statistics&option=assists&GET_TOURNAMENT_ID=$3 [QSA]
+RewriteRule ^[a-zA-Z]+([0-9]+)/([A-Z]+)/tournament/([0-9]+)/statistics/assists/([0-9]+)$ index.php?SERV=$1&action=tournament_view&LANG=$2&tab=statistics&option=assists&GET_TOURNAMENT_ID=$3&page=$4 [QSA]
+RewriteRule ^[a-zA-Z]+([0-9]+)/([A-Z]+)/tournament/([0-9]+)/statistics/assists/([0-9]+)/$ index.php?SERV=$1&action=tournament_view&LANG=$2&tab=statistics&option=assists&GET_TOURNAMENT_ID=$3&page=$4 [QSA]
+
+##### TURNIEJE - END
+
+##### ROZGRYWKI - BEGIN
+RewriteRule ^[a-zA-Z]+([0-9]+)/([A-Z]+)/game/([0-9]+)/round/([0-9]+)$ index.php?SERV=$1&action=game_view&LANG=$2&tab=table&GET_GAME_ID=$3&GET_ROUND=$4 [QSA]
+RewriteRule ^[a-zA-Z]+([0-9]+)/([A-Z]+)/game/([0-9]+)/round/([0-9]+)/$ index.php?SERV=$1&action=game_view&LANG=$2&tab=table&GET_GAME_ID=$3&GET_ROUND=$4 [QSA]
+RewriteRule ^[a-zA-Z]+([0-9]+)/([A-Z]+)/game/([0-9]+)$ index.php?SERV=$1&action=game_view&LANG=$2&tab=table&GET_GAME_ID=$3 [QSA]
+RewriteRule ^[a-zA-Z]+([0-9]+)/([A-Z]+)/game/([0-9]+)/$ index.php?SERV=$1&action=game_view&LANG=$2&tab=table&GET_GAME_ID=$3 [QSA]
+RewriteRule ^[a-zA-Z]+([0-9]+)/([A-Z]+)/game/([0-9]+)/info$ index.php?SERV=$1&action=game_view&LANG=$2&tab=info&GET_GAME_ID=$3 [QSA]
+RewriteRule ^[a-zA-Z]+([0-9]+)/([A-Z]+)/game/([0-9]+)/info/$ index.php?SERV=$1&action=game_view&LANG=$2&tab=info&GET_GAME_ID=$3 [QSA]
+RewriteRule ^[a-zA-Z]+([0-9]+)/([A-Z]+)/game/([0-9]+)/statistics$ index.php?SERV=$1&action=game_view&LANG=$2&tab=statistics&GET_GAME_ID=$3 [QSA]
+RewriteRule ^[a-zA-Z]+([0-9]+)/([A-Z]+)/game/([0-9]+)/statistics/$ index.php?SERV=$1&action=game_view&LANG=$2&tab=statistics&GET_GAME_ID=$3 [QSA]
+
+RewriteRule ^[a-zA-Z]+([0-9]+)/([A-Z]+)/game/([0-9]+)/statistics/goalscorers$ index.php?SERV=$1&action=game_view&LANG=$2&tab=statistics&option=goalscorers&GET_GAME_ID=$3 [QSA]
+RewriteRule ^[a-zA-Z]+([0-9]+)/([A-Z]+)/game/([0-9]+)/statistics/goalscorers/$ index.php?SERV=$1&action=game_view&LANG=$2&tab=statistics&option=goalscorers&GET_GAME_ID=$3 [QSA]
+RewriteRule ^[a-zA-Z]+([0-9]+)/([A-Z]+)/game/([0-9]+)/statistics/goalscorers/([0-9]+)$ index.php?SERV=$1&action=game_view&LANG=$2&tab=statistics&option=goalscorers&GET_GAME_ID=$3&page=$4 [QSA]
+RewriteRule ^[a-zA-Z]+([0-9]+)/([A-Z]+)/game/([0-9]+)/statistics/goalscorers/([0-9]+)/$ index.php?SERV=$1&action=game_view&LANG=$2&tab=statistics&option=goalscorers&GET_GAME_ID=$3&page=$4 [QSA]
+
+RewriteRule ^[a-zA-Z]+([0-9]+)/([A-Z]+)/game/([0-9]+)/statistics/yellowcards$ index.php?SERV=$1&action=game_view&LANG=$2&tab=statistics&option=yellowcards&GET_GAME_ID=$3 [QSA]
+RewriteRule ^[a-zA-Z]+([0-9]+)/([A-Z]+)/game/([0-9]+)/statistics/yellowcards/$ index.php?SERV=$1&action=game_view&LANG=$2&tab=statistics&option=yellowcards&GET_GAME_ID=$3 [QSA]
+RewriteRule ^[a-zA-Z]+([0-9]+)/([A-Z]+)/game/([0-9]+)/statistics/yellowcards/([0-9]+)$ index.php?SERV=$1&action=game_view&LANG=$2&tab=statistics&option=yellowcards&GET_GAME_ID=$3&page=$4 [QSA]
+RewriteRule ^[a-zA-Z]+([0-9]+)/([A-Z]+)/game/([0-9]+)/statistics/yellowcards/([0-9]+)/$ index.php?SERV=$1&action=game_view&LANG=$2&tab=statistics&option=yellowcards&GET_GAME_ID=$3&page=$4 [QSA]
+
+RewriteRule ^[a-zA-Z]+([0-9]+)/([A-Z]+)/game/([0-9]+)/statistics/redcards$ index.php?SERV=$1&action=game_view&LANG=$2&tab=statistics&option=redcards&GET_GAME_ID=$3 [QSA]
+RewriteRule ^[a-zA-Z]+([0-9]+)/([A-Z]+)/game/([0-9]+)/statistics/redcards/$ index.php?SERV=$1&action=game_view&LANG=$2&tab=statistics&option=redcards&GET_GAME_ID=$3 [QSA]
+RewriteRule ^[a-zA-Z]+([0-9]+)/([A-Z]+)/game/([0-9]+)/statistics/redcards/([0-9]+)$ index.php?SERV=$1&action=game_view&LANG=$2&tab=statistics&option=redcards&GET_GAME_ID=$3&page=$4 [QSA]
+RewriteRule ^[a-zA-Z]+([0-9]+)/([A-Z]+)/game/([0-9]+)/statistics/redcards/([0-9]+)/$ index.php?SERV=$1&action=game_view&LANG=$2&tab=statistics&option=redcards&GET_GAME_ID=$3&page=$4 [QSA]
+
+RewriteRule ^[a-zA-Z]+([0-9]+)/([A-Z]+)/game/([0-9]+)/statistics/assists$ index.php?SERV=$1&action=game_view&LANG=$2&tab=statistics&option=assists&GET_GAME_ID=$3 [QSA]
+RewriteRule ^[a-zA-Z]+([0-9]+)/([A-Z]+)/game/([0-9]+)/statistics/assists/$ index.php?SERV=$1&action=game_view&LANG=$2&tab=statistics&option=assists&GET_GAME_ID=$3 [QSA]
+RewriteRule ^[a-zA-Z]+([0-9]+)/([A-Z]+)/game/([0-9]+)/statistics/assists/([0-9]+)$ index.php?SERV=$1&action=game_view&LANG=$2&tab=statistics&option=assists&GET_GAME_ID=$3&page=$4 [QSA]
+RewriteRule ^[a-zA-Z]+([0-9]+)/([A-Z]+)/game/([0-9]+)/statistics/assists/([0-9]+)/$ index.php?SERV=$1&action=game_view&LANG=$2&tab=statistics&option=assists&GET_GAME_ID=$3&page=$4 [QSA]
+
+RewriteRule ^[a-zA-Z]+([0-9]+)/([A-Z]+)/game/([0-9]+)/fixtures$ index.php?SERV=$1&action=game_view&LANG=$2&tab=fixtures&GET_GAME_ID=$3 [QSA]
+RewriteRule ^[a-zA-Z]+([0-9]+)/([A-Z]+)/game/([0-9]+)/fixtures/$ index.php?SERV=$1&action=game_view&LANG=$2&tab=fixtures&GET_GAME_ID=$3 [QSA]
+RewriteRule ^[a-zA-Z]+([0-9]+)/([A-Z]+)/game/([0-9]+)/fixtures/info/1$ index.php?SERV=$1&action=game_view&LANG=$2&tab=fixtures&GET_GAME_ID=$3&infoFix=1 [QSA]
+RewriteRule ^[a-zA-Z]+([0-9]+)/([A-Z]+)/game/([0-9]+)/fixtures/info/2$ index.php?SERV=$1&action=game_view&LANG=$2&tab=fixtures&GET_GAME_ID=$3&infoFix=2 [QSA]
+
+RewriteRule ^[a-zA-Z]+([0-9]+)/([A-Z]+)/game/([0-9]+)/transfers$ index.php?SERV=$1&action=game_view&LANG=$2&tab=transfers&GET_GAME_ID=$3 [QSA]
+RewriteRule ^[a-zA-Z]+([0-9]+)/([A-Z]+)/game/([0-9]+)/transfers/$ index.php?SERV=$1&action=game_view&LANG=$2&tab=transfers&GET_GAME_ID=$3 [QSA]
+RewriteRule ^[a-zA-Z]+([0-9]+)/([A-Z]+)/game/([0-9]+)/transfers/([0-9]+)$ index.php?SERV=$1&action=game_view&LANG=$2&tab=transfers&GET_GAME_ID=$3&page=$4 [QSA]
+RewriteRule ^[a-zA-Z]+([0-9]+)/([A-Z]+)/game/([0-9]+)/transfers/([0-9]+)/$ index.php?SERV=$1&action=game_view&LANG=$2&tab=transfers&GET_GAME_ID=$3&page=$4 [QSA]
+##### ROZGRYWKI - END
+
+##### POWIADOMIENIA - BEGIN
+RewriteRule ^[a-zA-Z]+([0-9]+)/([A-Z]+)/notifications$ index.php?SERV=$1&action=notifications_view&LANG=$2 [QSA]
+RewriteRule ^[a-zA-Z]+([0-9]+)/([A-Z]+)/notifications/$ index.php?SERV=$1&action=notifications_view&LANG=$2 [QSA]
+RewriteRule ^[a-zA-Z]+([0-9]+)/([A-Z]+)/notifications/([0-9]+)$ index.php?SERV=$1&action=notifications_view&LANG=$2&page=$3 [QSA]
+RewriteRule ^[a-zA-Z]+([0-9]+)/([A-Z]+)/notifications/([0-9]+)/$ index.php?SERV=$1&action=notifications_view&LANG=$2&page=$3 [QSA]
+RewriteRule ^[a-zA-Z]+([0-9]+)/([A-Z]+)/notifications/read/all$ index.php?SERV=$1&action=notifications_view&LANG=$2&option=real_all [QSA]
+##### POWIADOMIENIA - END
+
+##### POWIADOMIENIA - BEGIN
+RewriteRule ^[a-zA-Z]+([0-9]+)/([A-Z]+)/transfer-of-money$ index.php?SERV=$1&action=transfer_of_money&LANG=$2 [QSA]
+RewriteRule ^[a-zA-Z]+([0-9]+)/([A-Z]+)/transfer-of-money/$ index.php?SERV=$1&action=transfer_of_money&LANG=$2 [QSA]
+RewriteRule ^[a-zA-Z]+([0-9]+)/([A-Z]+)/transfer-of-money/([0-9]+)/transfer$ index.php?SERV=$1&action=transfer_of_money&LANG=$2&get_option=$3&transferOption=transfer [QSA]
+RewriteRule ^[a-zA-Z]+([0-9]+)/([A-Z]+)/transfer-of-money/([0-9]+)/sms$ index.php?SERV=$1&action=transfer_of_money&LANG=$2&get_option=$3&transferOption=sms [QSA]
+RewriteRule ^[a-zA-Z]+([0-9]+)/([A-Z]+)/transfer-of-money/done$ index.php?SERV=$1&action=transfer_of_money&LANG=$2&info=done [QSA]
+RewriteRule ^[a-zA-Z]+([0-9]+)/([A-Z]+)/transfer-of-money/error$ index.php?SERV=$1&action=transfer_of_money&LANG=$2&info=error [QSA]
+##### POWIADOMIENIA - END
+
+
+##### DRUZYNY - BEGIN
+RewriteRule ^[a-zA-Z]+([0-9]+)/([A-Z]+)/team$ index.php?SERV=$1&action=team_view_user&tab=players&option=players&LANG=$2 [QSA]
+RewriteRule ^[a-zA-Z]+([0-9]+)/([A-Z]+)/team/$ index.php?SERV=$1&action=team_view_user&tab=players&option=players&LANG=$2 [QSA]
+RewriteRule ^[a-zA-Z]+([0-9]+)/([A-Z]+)/team/reset_squad$ index.php?SERV=$1&action=team_view_user&tab=players&option=players&LANG=$2&reset_Sqad_Team [QSA]
+RewriteRule ^[a-zA-Z]+([0-9]+)/([A-Z]+)/team/players$ index.php?SERV=$1&action=team_view_user&tab=players&option=players&LANG=$2 [QSA]
+RewriteRule ^[a-zA-Z]+([0-9]+)/([A-Z]+)/team/players/$ index.php?SERV=$1&action=team_view_user&tab=players&option=players&LANG=$2 [QSA]
+RewriteRule ^[a-zA-Z]+([0-9]+)/([A-Z]+)/team/players/condition$ index.php?SERV=$1&action=team_view_user&tab=players&option=condition&LANG=$2 [QSA]
+RewriteRule ^[a-zA-Z]+([0-9]+)/([A-Z]+)/team/players/condition/$ index.php?SERV=$1&action=team_view_user&tab=players&option=condition&LANG=$2 [QSA]
+RewriteRule ^[a-zA-Z]+([0-9]+)/([A-Z]+)/team/players/numbers$ index.php?SERV=$1&action=team_view_user&tab=players&option=numbers&LANG=$2 [QSA]
+RewriteRule ^[a-zA-Z]+([0-9]+)/([A-Z]+)/team/players/numbers/$ index.php?SERV=$1&action=team_view_user&tab=players&option=numbers&LANG=$2 [QSA]
+RewriteRule ^[a-zA-Z]+([0-9]+)/([A-Z]+)/team/players/skills$ index.php?SERV=$1&action=team_view_user&tab=players&option=skills&LANG=$2 [QSA]
+RewriteRule ^[a-zA-Z]+([0-9]+)/([A-Z]+)/team/players/skills/$ index.php?SERV=$1&action=team_view_user&tab=players&option=skills&LANG=$2 [QSA]
+
+
+RewriteRule ^[a-zA-Z]+([0-9]+)/([A-Z]+)/team/players/sort/date/desc$ index.php?SERV=$1&action=team_view_user&tab=players&option=players&sort=desc&sortType=date&LANG=$2 [QSA]
+RewriteRule ^[a-zA-Z]+([0-9]+)/([A-Z]+)/team/players/sort/date/asc$ index.php?SERV=$1&action=team_view_user&tab=players&option=players&sort=asc&sortType=date&LANG=$2 [QSA]
+RewriteRule ^[a-zA-Z]+([0-9]+)/([A-Z]+)/team/players/sort/country/desc$ index.php?SERV=$1&action=team_view_user&tab=players&option=players&sort=desc&sortType=country&LANG=$2 [QSA]
+RewriteRule ^[a-zA-Z]+([0-9]+)/([A-Z]+)/team/players/sort/country/asc$ index.php?SERV=$1&action=team_view_user&tab=players&option=players&sort=asc&sortType=country&LANG=$2 [QSA]
+RewriteRule ^[a-zA-Z]+([0-9]+)/([A-Z]+)/team/players/sort/name/desc$ index.php?SERV=$1&action=team_view_user&tab=players&option=players&sort=desc&sortType=name&LANG=$2 [QSA]
+RewriteRule ^[a-zA-Z]+([0-9]+)/([A-Z]+)/team/players/sort/name/asc$ index.php?SERV=$1&action=team_view_user&tab=players&option=players&sort=asc&sortType=name&LANG=$2 [QSA]
+RewriteRule ^[a-zA-Z]+([0-9]+)/([A-Z]+)/team/players/sort/position/desc$ index.php?SERV=$1&action=team_view_user&tab=players&option=players&sort=desc&sortType=position&LANG=$2 [QSA]
+RewriteRule ^[a-zA-Z]+([0-9]+)/([A-Z]+)/team/players/sort/position/asc$ index.php?SERV=$1&action=team_view_user&tab=players&option=players&sort=asc&sortType=position&LANG=$2 [QSA]
+
+
+RewriteRule ^[a-zA-Z]+([0-9]+)/([A-Z]+)/team/players/condition/sort/condition/desc$ index.php?SERV=$1&action=team_view_user&tab=players&option=condition&sort=desc&sortType=condition&LANG=$2 [QSA]
+RewriteRule ^[a-zA-Z]+([0-9]+)/([A-Z]+)/team/players/condition/sort/condition/asc$ index.php?SERV=$1&action=team_view_user&tab=players&option=condition&sort=asc&sortType=condition&LANG=$2 [QSA]
+RewriteRule ^[a-zA-Z]+([0-9]+)/([A-Z]+)/team/players/condition/sort/country/desc$ index.php?SERV=$1&action=team_view_user&tab=players&option=condition&sort=desc&sortType=country&LANG=$2 [QSA]
+RewriteRule ^[a-zA-Z]+([0-9]+)/([A-Z]+)/team/players/condition/sort/country/asc$ index.php?SERV=$1&action=team_view_user&tab=players&option=condition&sort=asc&sortType=country&LANG=$2 [QSA]
+RewriteRule ^[a-zA-Z]+([0-9]+)/([A-Z]+)/team/players/condition/sort/name/desc$ index.php?SERV=$1&action=team_view_user&tab=players&option=condition&sort=desc&sortType=name&LANG=$2 [QSA]
+RewriteRule ^[a-zA-Z]+([0-9]+)/([A-Z]+)/team/players/condition/sort/name/asc$ index.php?SERV=$1&action=team_view_user&tab=players&option=condition&sort=asc&sortType=name&LANG=$2 [QSA]
+RewriteRule ^[a-zA-Z]+([0-9]+)/([A-Z]+)/team/players/condition/sort/position/desc$ index.php?SERV=$1&action=team_view_user&tab=players&option=condition&sort=desc&sortType=position&LANG=$2 [QSA]
+RewriteRule ^[a-zA-Z]+([0-9]+)/([A-Z]+)/team/players/condition/sort/position/asc$ index.php?SERV=$1&action=team_view_user&tab=players&option=condition&sort=asc&sortType=position&LANG=$2 [QSA]
+
+
+RewriteRule ^[a-zA-Z]+([0-9]+)/([A-Z]+)/team/players/numbers/sort/date/desc$ index.php?SERV=$1&action=team_view_user&tab=players&option=numbers&sort=desc&sortType=date&LANG=$2 [QSA]
+RewriteRule ^[a-zA-Z]+([0-9]+)/([A-Z]+)/team/players/numbers/sort/date/asc$ index.php?SERV=$1&action=team_view_user&tab=players&option=numbers&sort=asc&sortType=date&LANG=$2 [QSA]
+RewriteRule ^[a-zA-Z]+([0-9]+)/([A-Z]+)/team/players/numbers/sort/country/desc$ index.php?SERV=$1&action=team_view_user&tab=players&option=numbers&sort=desc&sortType=country&LANG=$2 [QSA]
+RewriteRule ^[a-zA-Z]+([0-9]+)/([A-Z]+)/team/players/numbers/sort/country/asc$ index.php?SERV=$1&action=team_view_user&tab=players&option=numbers&sort=asc&sortType=country&LANG=$2 [QSA]
+RewriteRule ^[a-zA-Z]+([0-9]+)/([A-Z]+)/team/players/numbers/sort/name/desc$ index.php?SERV=$1&action=team_view_user&tab=players&option=numbers&sort=desc&sortType=name&LANG=$2 [QSA]
+RewriteRule ^[a-zA-Z]+([0-9]+)/([A-Z]+)/team/players/numbers/sort/name/asc$ index.php?SERV=$1&action=team_view_user&tab=players&option=numbers&sort=asc&sortType=name&LANG=$2 [QSA]
+RewriteRule ^[a-zA-Z]+([0-9]+)/([A-Z]+)/team/players/numbers/sort/position/desc$ index.php?SERV=$1&action=team_view_user&tab=players&option=numbers&sort=desc&sortType=position&LANG=$2 [QSA]
+RewriteRule ^[a-zA-Z]+([0-9]+)/([A-Z]+)/team/players/numbers/sort/position/asc$ index.php?SERV=$1&action=team_view_user&tab=players&option=numbers&sort=asc&sortType=position&LANG=$2 [QSA]
+
+
+
+RewriteRule ^[a-zA-Z]+([0-9]+)/([A-Z]+)/team/players/skills/sort/mental/desc$ index.php?SERV=$1&action=team_view_user&tab=players&option=skills&sort=desc&sortType=mental&LANG=$2 [QSA]
+RewriteRule ^[a-zA-Z]+([0-9]+)/([A-Z]+)/team/players/skills/sort/mental/asc$ index.php?SERV=$1&action=team_view_user&tab=players&option=skills&sort=asc&sortType=mental&LANG=$2 [QSA]
+
+RewriteRule ^[a-zA-Z]+([0-9]+)/([A-Z]+)/team/players/skills/sort/personal/desc$ index.php?SERV=$1&action=team_view_user&tab=players&option=skills&sort=desc&sortType=personal&LANG=$2 [QSA]
+RewriteRule ^[a-zA-Z]+([0-9]+)/([A-Z]+)/team/players/skills/sort/personal/asc$ index.php?SERV=$1&action=team_view_user&tab=players&option=skills&sort=asc&sortType=personal&LANG=$2 [QSA]
+
+RewriteRule ^[a-zA-Z]+([0-9]+)/([A-Z]+)/team/players/skills/sort/name/desc$ index.php?SERV=$1&action=team_view_user&tab=players&option=skills&sort=desc&sortType=name&LANG=$2 [QSA]
+RewriteRule ^[a-zA-Z]+([0-9]+)/([A-Z]+)/team/players/skills/sort/name/asc$ index.php?SERV=$1&action=team_view_user&tab=players&option=skills&sort=asc&sortType=name&LANG=$2 [QSA]
+
+RewriteRule ^[a-zA-Z]+([0-9]+)/([A-Z]+)/team/players/skills/sort/technic/desc$ index.php?SERV=$1&action=team_view_user&tab=players&option=skills&sort=desc&sortType=technic&LANG=$2 [QSA]
+RewriteRule ^[a-zA-Z]+([0-9]+)/([A-Z]+)/team/players/skills/sort/technic/asc$ index.php?SERV=$1&action=team_view_user&tab=players&option=skills&sort=asc&sortType=technic&LANG=$2 [QSA]
+
+RewriteRule ^[a-zA-Z]+([0-9]+)/([A-Z]+)/team/players/skills/sort/physic/desc$ index.php?SERV=$1&action=team_view_user&tab=players&option=skills&sort=desc&sortType=physic&LANG=$2 [QSA]
+RewriteRule ^[a-zA-Z]+([0-9]+)/([A-Z]+)/team/players/skills/sort/physic/asc$ index.php?SERV=$1&action=team_view_user&tab=players&option=skills&sort=asc&sortType=physic&LANG=$2 [QSA]
+
+
+RewriteRule ^[a-zA-Z]+([0-9]+)/([A-Z]+)/start/create/team$ index.php?SERV=$1&LANG=$2&startCreateTeam [QSA]
+
+RewriteRule ^[a-zA-Z]+([0-9]+)/([A-Z]+)/team/tactics$ index.php?SERV=$1&action=team_view_user&tab=tactics&LANG=$2 [QSA]
+RewriteRule ^[a-zA-Z]+([0-9]+)/([A-Z]+)/team/tactics/$ index.php?SERV=$1&action=team_view_user&tab=tactics&LANG=$2 [QSA]
+RewriteRule ^[a-zA-Z]+([0-9]+)/([A-Z]+)/team/tactics/formation$ index.php?SERV=$1&action=team_view_user&tab=tactics&option=formation&LANG=$2& [QSA]
+RewriteRule ^[a-zA-Z]+([0-9]+)/([A-Z]+)/team/tactics/formation/$ index.php?SERV=$1&action=team_view_user&tab=tactics&option=formation&LANG=$2 [QSA]
+RewriteRule ^[a-zA-Z]+([0-9]+)/([A-Z]+)/team/tactics/roles$ index.php?SERV=$1&action=team_view_user&tab=tactics&option=roles&LANG=$2 [QSA]
+RewriteRule ^[a-zA-Z]+([0-9]+)/([A-Z]+)/team/tactics/roles/$ index.php?SERV=$1&action=team_view_user&tab=tactics&option=roles&LANG=$2 [QSA]
+RewriteRule ^[a-zA-Z]+([0-9]+)/([A-Z]+)/team/tactics/roles/$ index.php?SERV=$1&action=team_view_user&tab=tactics&option=roles&LANG=$2 [QSA]
+RewriteRule ^[a-zA-Z]+([0-9]+)/([A-Z]+)/team/tactics/roles/penalty$ index.php?SERV=$1&action=team_view_user&tab=tactics&option=roles&TabOption=penalty&LANG=$2 [QSA]
+RewriteRule ^[a-zA-Z]+([0-9]+)/([A-Z]+)/team/tactics/roles/freekick$ index.php?SERV=$1&action=team_view_user&tab=tactics&option=roles&TabOption=freekick&LANG=$2 [QSA]
+RewriteRule ^[a-zA-Z]+([0-9]+)/([A-Z]+)/team/tactics/roles/corner$ index.php?SERV=$1&action=team_view_user&tab=tactics&option=roles&TabOption=corner&LANG=$2 [QSA]
+RewriteRule ^[a-zA-Z]+([0-9]+)/([A-Z]+)/team/tactics/roles/captain$ index.php?SERV=$1&action=team_view_user&tab=tactics&option=roles&TabOption=captain&LANG=$2 [QSA]
+RewriteRule ^[a-zA-Z]+([0-9]+)/([A-Z]+)/team/tactics/match_commands$ index.php?SERV=$1&action=team_view_user&tab=tactics&option=matchcommands&LANG=$2 [QSA]
+RewriteRule ^[a-zA-Z]+([0-9]+)/([A-Z]+)/team/tactics/match_commands/$ index.php?SERV=$1&action=team_view_user&tab=tactics&option=matchcommands&LANG=$2 [QSA]
+RewriteRule ^[a-zA-Z]+([0-9]+)/([A-Z]+)/team/training$ index.php?SERV=$1&action=team_view_user&tab=training&LANG=$2 [QSA]
+RewriteRule ^[a-zA-Z]+([0-9]+)/([A-Z]+)/team/training/$ index.php?SERV=$1&action=team_view_user&tab=training&LANG=$2 [QSA]
+
+RewriteRule ^[a-zA-Z]+([0-9]+)/([A-Z]+)/team/training/games$ index.php?SERV=$1&action=team_view_user&tab=training&option=games&LANG=$2 [QSA]
+RewriteRule ^[a-zA-Z]+([0-9]+)/([A-Z]+)/team/training/games/$ index.php?SERV=$1&action=team_view_user&tab=training&option=games&LANG=$2 [QSA]
+
+RewriteRule ^[a-zA-Z]+([0-9]+)/([A-Z]+)/team/training/personal$ index.php?SERV=$1&action=team_view_user&tab=training&option=personal&LANG=$2 [QSA]
+RewriteRule ^[a-zA-Z]+([0-9]+)/([A-Z]+)/team/training/personal/$ index.php?SERV=$1&action=team_view_user&tab=training&option=personal&LANG=$2 [QSA]
+RewriteRule ^[a-zA-Z]+([0-9]+)/([A-Z]+)/team/training/personal/trainer/([0-9]+)$ index.php?SERV=$1&action=team_view_user&tab=training&option=personal&getTrainer=$3&LANG=$2 [QSA]
+
+RewriteRule ^[a-zA-Z]+([0-9]+)/([A-Z]+)/team/([0-9]+)/rename$ index.php?SERV=$1&action=team_view&LANG=$2&option=renameNameTeam&tab=players&GET_TEAM_ID=$3 [QSA]
+RewriteRule ^[a-zA-Z]+([0-9]+)/([A-Z]+)/team/([0-9]+)$ index.php?SERV=$1&action=team_view&LANG=$2&tab=players&GET_TEAM_ID=$3 [QSA]
+RewriteRule ^[a-zA-Z]+([0-9]+)/([A-Z]+)/team/([0-9]+)/$ index.php?SERV=$1&action=team_view&LANG=$2&tab=players&GET_TEAM_ID=$3 [QSA]
+RewriteRule ^[a-zA-Z]+([0-9]+)/([A-Z]+)/team/([0-9]+)/tutorial/$ index.php?SERV=$1&action=team_view&LANG=$2&tab=players&GET_TEAM_ID=$3&redir_tutorial [QSA]
+RewriteRule ^[a-zA-Z]+([0-9]+)/([A-Z]+)/team/([0-9]+)/accept$ index.php?SERV=$1&action=team_view&LANG=$2&tab=players&GET_TEAM_ID=$3&accept_offer [QSA]
+RewriteRule ^[a-zA-Z]+([0-9]+)/([A-Z]+)/team/([0-9]+)/accept/$ index.php?SERV=$1&action=team_view&LANG=$2&tab=players&GET_TEAM_ID=$3&accept_offer [QSA]
+RewriteRule ^[a-zA-Z]+([0-9]+)/([A-Z]+)/team/([0-9]+)/retire$ index.php?SERV=$1&action=team_view&LANG=$2&tab=players&GET_TEAM_ID=$3&retire_offer [QSA]
+RewriteRule ^[a-zA-Z]+([0-9]+)/([A-Z]+)/team/([0-9]+)/retire/$ index.php?SERV=$1&action=team_view&LANG=$2&tab=players&GET_TEAM_ID=$3&retire_offer [QSA]
+RewriteRule ^[a-zA-Z]+([0-9]+)/([A-Z]+)/team/([0-9]+)/reputation$ index.php?SERV=$1&action=team_view&LANG=$2&tab=players&GET_TEAM_ID=$3&reputation_info [QSA]
+RewriteRule ^[a-zA-Z]+([0-9]+)/([A-Z]+)/team/([0-9]+)/reputation/$ index.php?SERV=$1&action=team_view&LANG=$2&tab=players&GET_TEAM_ID=$3&reputation_info [QSA]
+RewriteRule ^[a-zA-Z]+([0-9]+)/([A-Z]+)/team/fixtures$ index.php?SERV=$1&action=team_view_user&tab=fixtures&LANG=$2 [QSA]
+RewriteRule ^[a-zA-Z]+([0-9]+)/([A-Z]+)/team/fixtures/$ index.php?SERV=$1&action=team_view_user&tab=fixtures&LANG=$2 [QSA]
+
+RewriteRule ^[a-zA-Z]+([0-9]+)/([A-Z]+)/team/([0-9]+)/fixtures$ index.php?SERV=$1&action=team_view_user&tab=fixtures_new&LANG=$2&GET_USER_TEAM_ID=$3 [QSA]
+RewriteRule ^[a-zA-Z]+([0-9]+)/([A-Z]+)/team/([0-9]+)/fixtures/$ index.php?SERV=$1&action=team_view_user&tab=fixtures_new&LANG=$2&GET_USER_TEAM_ID=$3 [QSA]
+RewriteRule ^[a-zA-Z]+([0-9]+)/([A-Z]+)/team/([0-9]+)/fixtures/([0-9]+)$ index.php?SERV=$1&action=team_view_user&tab=fixtures_new&LANG=$2&GET_USER_TEAM_ID=$3&page=$4 [QSA]
+RewriteRule ^[a-zA-Z]+([0-9]+)/([A-Z]+)/team/([0-9]+)/fixtures/planned/$ index.php?SERV=$1&action=team_view_user&tab=fixtures_new&LANG=$2&GET_USER_TEAM_ID=$3&optionFilter=planned [QSA]
+RewriteRule ^[a-zA-Z]+([0-9]+)/([A-Z]+)/team/([0-9]+)/fixtures/planned/([0-9]+)$ index.php?SERV=$1&action=team_view_user&tab=fixtures_new&LANG=$2&GET_USER_TEAM_ID=$3&optionFilter=planned&page=$4 [QSA]
+RewriteRule ^[a-zA-Z]+([0-9]+)/([A-Z]+)/team/([0-9]+)/fixtures/played/$ index.php?SERV=$1&action=team_view_user&tab=fixtures_new&LANG=$2&GET_USER_TEAM_ID=$3&optionFilter=played [QSA]
+RewriteRule ^[a-zA-Z]+([0-9]+)/([A-Z]+)/team/([0-9]+)/fixtures/played/([0-9]+)$ index.php?SERV=$1&action=team_view_user&tab=fixtures_new&LANG=$2&GET_USER_TEAM_ID=$3&optionFilter=played&page=$4 [QSA]
+RewriteRule ^[a-zA-Z]+([0-9]+)/([A-Z]+)/team/([0-9]+)/fixtures/friends/$ index.php?SERV=$1&action=team_view_user&tab=fixtures_new&LANG=$2&GET_USER_TEAM_ID=$3&optionFilter=friends [QSA]
+RewriteRule ^[a-zA-Z]+([0-9]+)/([A-Z]+)/team/([0-9]+)/fixtures/friends/([0-9]+)$ index.php?SERV=$1&action=team_view_user&tab=fixtures_new&LANG=$2&GET_USER_TEAM_ID=$3&optionFilter=friends&page=$4 [QSA]
+RewriteRule ^[a-zA-Z]+([0-9]+)/([A-Z]+)/team/([0-9]+)/fixtures/friends_planned/$ index.php?SERV=$1&action=team_view_user&tab=fixtures_new&LANG=$2&GET_USER_TEAM_ID=$3&optionFilter=friends_planned [QSA]
+RewriteRule ^[a-zA-Z]+([0-9]+)/([A-Z]+)/team/([0-9]+)/fixtures/friends_planned/([0-9]+)$ index.php?SERV=$1&action=team_view_user&tab=fixtures_new&LANG=$2&GET_USER_TEAM_ID=$3&optionFilter=friends_planned&page=$4 [QSA]
+
+RewriteRule ^[a-zA-Z]+([0-9]+)/([A-Z]+)/team/contracts$ index.php?SERV=$1&action=team_view_user&tab=contracts&LANG=$2 [QSA]
+RewriteRule ^[a-zA-Z]+([0-9]+)/([A-Z]+)/team/contracts/$ index.php?SERV=$1&action=team_view_user&tab=contracts&LANG=$2 [QSA]
+RewriteRule ^[a-zA-Z]+([0-9]+)/([A-Z]+)/team/injuries$ index.php?SERV=$1&action=team_view_user&tab=injuries&LANG=$2 [QSA]
+RewriteRule ^[a-zA-Z]+([0-9]+)/([A-Z]+)/team/injuries/$ index.php?SERV=$1&action=team_view_user&tab=injuries&LANG=$2 [QSA]
+#RewriteRule ^[a-zA-Z]+([0-9]+)/([A-Z]+)/team/transfer_list$ index.php?SERV=$1&action=team_view_user&tab=transfer_list&LANG=$2 [QSA]
+#RewriteRule ^[a-zA-Z]+([0-9]+)/([A-Z]+)/team/transfer_list/$ index.php?SERV=$1&action=team_view_user&tab=transfer_list&LANG=$2 [QSA]
+
+
+RewriteRule ^[a-zA-Z]+([0-9]+)/([A-Z]+)/team/([0-9]+)/tactics$ index.php?SERV=$1&action=team_view_user&tab=user_tactics&LANG=$2&GET_USER_TEAM_ID=$3 [QSA]
+RewriteRule ^[a-zA-Z]+([0-9]+)/([A-Z]+)/team/([0-9]+)/tactics/$ index.php?SERV=$1&action=team_view_user&tab=user_tactics&LANG=$2&GET_USER_TEAM_ID=$3 [QSA]
+
+RewriteRule ^[a-zA-Z]+([0-9]+)/([A-Z]+)/team/([0-9]+)/stadium$ index.php?SERV=$1&action=team_view_user&tab=user_stadium&LANG=$2&GET_USER_TEAM_ID=$3 [QSA]
+RewriteRule ^[a-zA-Z]+([0-9]+)/([A-Z]+)/team/([0-9]+)/stadium/$ index.php?SERV=$1&action=team_view_user&tab=user_stadium&LANG=$2&GET_USER_TEAM_ID=$3 [QSA]
+
+RewriteRule ^[a-zA-Z]+([0-9]+)/([A-Z]+)/team/([0-9]+)/colors$ index.php?SERV=$1&action=team_view_user&tab=user_colors&LANG=$2&GET_USER_TEAM_ID=$3 [QSA]
+RewriteRule ^[a-zA-Z]+([0-9]+)/([A-Z]+)/team/([0-9]+)/colors/$ index.php?SERV=$1&action=team_view_user&tab=user_colors&LANG=$2&GET_USER_TEAM_ID=$3 [QSA]
+
+RewriteRule ^[a-zA-Z]+([0-9]+)/([A-Z]+)/team/([0-9]+)/fanclub/add$ index.php?SERV=$1&action=team_view&LANG=$2&tab=players&GET_TEAM_ID=$3&fanclub_add [QSA]
+RewriteRule ^[a-zA-Z]+([0-9]+)/([A-Z]+)/team/([0-9]+)/fanclub/add/$ index.php?SERV=$1&action=team_view&LANG=$2&tab=players&GET_TEAM_ID=$3&fanclub_add [QSA]
+RewriteRule ^[a-zA-Z]+([0-9]+)/([A-Z]+)/team/([0-9]+)/fanclub/resign$ index.php?SERV=$1&action=team_view&LANG=$2&tab=players&GET_TEAM_ID=$3&fanclub_resign [QSA]
+RewriteRule ^[a-zA-Z]+([0-9]+)/([A-Z]+)/team/([0-9]+)/fanclub/resign/$ index.php?SERV=$1&action=team_view&LANG=$2&tab=players&GET_TEAM_ID=$3&fanclub_resign [QSA]
+
+RewriteRule ^[a-zA-Z]+([0-9]+)/([A-Z]+)/team/([0-9]+)/invite/amateur/([0-9]{4})-([0-9]{2})-([0-9]{2})$ index.php?SERV=$1&action=team_view&LANG=$2&tab=players&GET_TEAM_ID=$3&invite_amateur&dY=$4&dM=$5&dD=$6 [QSA]
+RewriteRule ^[a-zA-Z]+([0-9]+)/([A-Z]+)/team/([0-9]+)/invite/amateur/([0-9]{4})-([0-9]{2})-([0-9]{2})/$ index.php?SERV=$1&action=team_view&LANG=$2&tab=players&GET_TEAM_ID=$3&invite_amateur&dY=$4&dM=$5&dD=$6 [QSA]
+RewriteRule ^[a-zA-Z]+([0-9]+)/([A-Z]+)/team/([0-9]+)/invite/amateur/send$ index.php?SERV=$1&action=team_view&LANG=$2&tab=players&GET_TEAM_ID=$3&infoAmateurSend [QSA]
+RewriteRule ^[a-zA-Z]+([0-9]+)/([A-Z]+)/team/([0-9]+)/invite/amateur/error/exists$ index.php?SERV=$1&action=team_view&LANG=$2&tab=players&GET_TEAM_ID=$3&infoAmateurErrorExists [QSA]
+RewriteRule ^[a-zA-Z]+([0-9]+)/([A-Z]+)/team/([0-9]+)/invite/amateur/error/date$ index.php?SERV=$1&action=team_view&LANG=$2&tab=players&GET_TEAM_ID=$3&infoAmateurErrorDate [QSA]
+RewriteRule ^[a-zA-Z]+([0-9]+)/([A-Z]+)/team/([0-9]+)/invite/amateur/error/team$ index.php?SERV=$1&action=team_view&LANG=$2&tab=players&GET_TEAM_ID=$3&infoAmateurErrorTeam [QSA]
+RewriteRule ^[a-zA-Z]+([0-9]+)/([A-Z]+)/team/([0-9]+)/invite/amateur/error/connect$ index.php?SERV=$1&action=team_view&LANG=$2&tab=players&GET_TEAM_ID=$3&infoAmateurErrorConnect [QSA]
+RewriteRule ^[a-zA-Z]+([0-9]+)/([A-Z]+)/team/([0-9]+)/invite/amateur/error/league$ index.php?SERV=$1&action=team_view&LANG=$2&tab=players&GET_TEAM_ID=$3&infoAmateurErrorLeague [QSA]
+
+RewriteRule ^[a-zA-Z]+([0-9]+)/([A-Z]+)/team/([0-9]+)/invite/friendly/([0-9]{4})-([0-9]{2})-([0-9]{2})$ index.php?SERV=$1&action=team_view&LANG=$2&tab=players&GET_TEAM_ID=$3&invite_friendly&dY=$4&dM=$5&dD=$6 [QSA]
+RewriteRule ^[a-zA-Z]+([0-9]+)/([A-Z]+)/team/([0-9]+)/invite/friendly/([0-9]{4})-([0-9]{2})-([0-9]{2})/$ index.php?SERV=$1&action=team_view&LANG=$2&tab=players&GET_TEAM_ID=$3&invite_friendly&dY=$4&dM=$5&dD=$6 [QSA]
+RewriteRule ^[a-zA-Z]+([0-9]+)/([A-Z]+)/team/([0-9]+)/invite/friendly/send$ index.php?SERV=$1&action=team_view&LANG=$2&tab=players&GET_TEAM_ID=$3&infoFriendlySend [QSA]
+RewriteRule ^[a-zA-Z]+([0-9]+)/([A-Z]+)/team/([0-9]+)/invite/friendly/error/exists$ index.php?SERV=$1&action=team_view&LANG=$2&tab=players&GET_TEAM_ID=$3&infoFriendlyErrorExists [QSA]
+RewriteRule ^[a-zA-Z]+([0-9]+)/([A-Z]+)/team/([0-9]+)/invite/friendly/error/date$ index.php?SERV=$1&action=team_view&LANG=$2&tab=players&GET_TEAM_ID=$3&infoFriendlyErrorDate [QSA]
+RewriteRule ^[a-zA-Z]+([0-9]+)/([A-Z]+)/team/([0-9]+)/invite/friendly/error/team$ index.php?SERV=$1&action=team_view&LANG=$2&tab=players&GET_TEAM_ID=$3&infoFriendlyErrorTeam [QSA]
+RewriteRule ^[a-zA-Z]+([0-9]+)/([A-Z]+)/team/([0-9]+)/invite/friendly/error/connect$ index.php?SERV=$1&action=team_view&LANG=$2&tab=players&GET_TEAM_ID=$3&infoFriendlyErrorConnect [QSA]
+
+RewriteRule ^[a-zA-Z]+([0-9]+)/([A-Z]+)/team/([0-9]+)/matches$ index.php?SERV=$1&action=team_view&tab=matches&LANG=$2&GET_USER_TEAM_ID=$3 [QSA]
+RewriteRule ^[a-zA-Z]+([0-9]+)/([A-Z]+)/team/([0-9]+)/matches/$ index.php?SERV=$1&action=team_view&tab=matches&LANG=$2&GET_USER_TEAM_ID=$3 [QSA]
+RewriteRule ^[a-zA-Z]+([0-9]+)/([A-Z]+)/team/([0-9]+)/matches/([0-9]+)$ index.php?SERV=$1&action=team_view&tab=matches&LANG=$2&GET_USER_TEAM_ID=$3&page=$4 [QSA]
+RewriteRule ^[a-zA-Z]+([0-9]+)/([A-Z]+)/team/([0-9]+)/matches/([0-9]+)/$ index.php?SERV=$1&action=team_view&tab=matches&LANG=$2&GET_USER_TEAM_ID=$3&page=$4 [QSA]
+
+##### DRUZYNY - END
+
+##### MANAGER - BEGIN
+RewriteRule ^[a-zA-Z]+([0-9]+)/([A-Z]+)/manager$ index.php?SERV=$1&action=manager_view&tab=shop&LANG=$2 [QSA]
+RewriteRule ^[a-zA-Z]+([0-9]+)/([A-Z]+)/manager/$ index.php?SERV=$1&action=manager_view&tab=shop&LANG=$2 [QSA]
+RewriteRule ^[a-zA-Z]+([0-9]+)/([A-Z]+)/manager/mail$ index.php?SERV=$1&action=manager_view&tab=mail&LANG=$2 [QSA]
+RewriteRule ^[a-zA-Z]+([0-9]+)/([A-Z]+)/manager/mail/$ index.php?SERV=$1&action=manager_view&tab=mail&LANG=$2 [QSA]
+RewriteRule ^[a-zA-Z]+([0-9]+)/([A-Z]+)/manager/jobs$ index.php?SERV=$1&action=manager_view&tab=jobs&LANG=$2 [QSA]
+RewriteRule ^[a-zA-Z]+([0-9]+)/([A-Z]+)/manager/jobs/$ index.php?SERV=$1&action=manager_view&tab=jobs&LANG=$2 [QSA]
+
+RewriteRule ^[a-zA-Z]+([0-9]+)/([A-Z]+)/manager/jobs/([0-9]+)$ index.php?SERV=$1&action=manager_view&tab=jobs&LANG=$2&page=$3 [QSA]
+RewriteRule ^[a-zA-Z]+([0-9]+)/([A-Z]+)/manager/jobs/([0-9]+)/$ index.php?SERV=$1&action=manager_view&tab=jobs&LANG=$2&page=$3 [QSA]
+
+RewriteRule ^[a-zA-Z]+([0-9]+)/([A-Z]+)/manager/jobs/([0-9]+)/([0-9]+)$ index.php?SERV=$1&action=manager_view&tab=jobs&LANG=$2&country=$3&page=$4 [QSA]
+RewriteRule ^[a-zA-Z]+([0-9]+)/([A-Z]+)/manager/jobs/([0-9]+)/([0-9]+)/$ index.php?SERV=$1&action=manager_view&tab=jobs&LANG=$2&country=$3&page=$4 [QSA]
+
+RewriteRule ^[a-zA-Z]+([0-9]+)/([A-Z]+)/manager/observed_players/delete/([0-9]+)$ index.php?SERV=$1&action=manager_view&tab=observed_players&LANG=$2&GET_DELETE_PLAYER=$3 [QSA]
+RewriteRule ^[a-zA-Z]+([0-9]+)/([A-Z]+)/manager/observed_players$ index.php?SERV=$1&action=manager_view&tab=observed_players&LANG=$2 [QSA]
+RewriteRule ^[a-zA-Z]+([0-9]+)/([A-Z]+)/manager/observed_players/$ index.php?SERV=$1&action=manager_view&tab=observed_players&LANG=$2 [QSA]
+RewriteRule ^[a-zA-Z]+([0-9]+)/([A-Z]+)/manager/observed_players/([0-9]+)$ index.php?SERV=$1&action=manager_view&tab=observed_players&LANG=$2&page=$3 [QSA]
+RewriteRule ^[a-zA-Z]+([0-9]+)/([A-Z]+)/manager/observed_players/([0-9]+)/$ index.php?SERV=$1&action=manager_view&tab=observed_players&LANG=$2&page=$3 [QSA]
+
+RewriteRule ^[a-zA-Z]+([0-9]+)/([A-Z]+)/manager/achieve$ index.php?SERV=$1&action=manager_view&tab=achieve&LANG=$2 [QSA]
+RewriteRule ^[a-zA-Z]+([0-9]+)/([A-Z]+)/manager/achieve/$ index.php?SERV=$1&action=manager_view&tab=achieve&LANG=$2 [QSA]
+RewriteRule ^[a-zA-Z]+([0-9]+)/([A-Z]+)/manager/your_friends$ index.php?SERV=$1&action=manager_view&tab=your_friends&LANG=$2 [QSA]
+RewriteRule ^[a-zA-Z]+([0-9]+)/([A-Z]+)/manager/your_friends/$ index.php?SERV=$1&action=manager_view&tab=your_friends&LANG=$2 [QSA]
+RewriteRule ^[a-zA-Z]+([0-9]+)/([A-Z]+)/manager/your_friends/online$ index.php?SERV=$1&action=manager_view&tab=your_friends&option=online&LANG=$2 [QSA]
+RewriteRule ^[a-zA-Z]+([0-9]+)/([A-Z]+)/manager/shop$ index.php?SERV=$1&action=manager_view&tab=shop&LANG=$2 [QSA]
+RewriteRule ^[a-zA-Z]+([0-9]+)/([A-Z]+)/manager/shop/$ index.php?SERV=$1&action=manager_view&tab=shop&LANG=$2 [QSA]
+RewriteRule ^[a-zA-Z]+([0-9]+)/([A-Z]+)/manager/shop/inventory$ index.php?SERV=$1&action=manager_view&tab=shop&option=inventory&LANG=$2 [QSA]
+RewriteRule ^[a-zA-Z]+([0-9]+)/([A-Z]+)/manager/shop/inventory/$ index.php?SERV=$1&action=manager_view&tab=shop&option=inventory&LANG=$2 [QSA]
+
+RewriteRule ^[a-zA-Z]+([0-9]+)/([A-Z]+)/manager/shop/product/([0-9]+)$ index.php?SERV=$1&action=manager_view&tab=shop&LANG=$2&ProdID=$3 [QSA]
+RewriteRule ^[a-zA-Z]+([0-9]+)/([A-Z]+)/manager/shop/product/([0-9]+)/buy$ index.php?SERV=$1&action=manager_view&tab=shop&LANG=$2&ProdID=$3&buySelectedProduct [QSA]
+RewriteRule ^[a-zA-Z]+([0-9]+)/([A-Z]+)/manager/shop/product/([0-9]+)/buy/$ index.php?SERV=$1&action=manager_view&tab=shop&LANG=$2&ProdID=$3&buySelectedProduct [QSA]
+RewriteRule ^[a-zA-Z]+([0-9]+)/([A-Z]+)/manager/shop/product/([0-9]+)/done$ index.php?SERV=$1&action=manager_view&tab=shop&LANG=$2&ProdID=$3&buyDone [QSA]
+RewriteRule ^[a-zA-Z]+([0-9]+)/([A-Z]+)/manager/shop/product/([0-9]+)/error$ index.php?SERV=$1&action=manager_view&tab=shop&LANG=$2&ProdID=$3&buyError [QSA]
+RewriteRule ^[a-zA-Z]+([0-9]+)/([A-Z]+)/manager/shop/use/product/([0-9]+)$ index.php?SERV=$1&action=manager_view&tab=shop&LANG=$2&ProdID=$3&useProduct [QSA]
+
+
+RewriteRule ^[a-zA-Z]+([0-9]+)/([A-Z]+)/setup/team/crest$ index.php?SERV=$1&action=setup_view&tab=team_crest&LANG=$2 [QSA]
+RewriteRule ^[a-zA-Z]+([0-9]+)/([A-Z]+)/setup/team/crest/$ index.php?SERV=$1&action=setup_view&tab=team_crest&LANG=$2 [QSA]
+RewriteRule ^[a-zA-Z]+([0-9]+)/([A-Z]+)/setup/team/crest/configure$ index.php?SERV=$1&action=setup_view&tab=team_crest&LANG=$2&configureTeamPhoto [QSA]
+RewriteRule ^[a-zA-Z]+([0-9]+)/([A-Z]+)/setup/team/crest/error/([0-9]+)$ index.php?SERV=$1&action=setup_view&tab=team_crest&LANG=$2&OptionError=$3 [QSA]
+
+
+RewriteRule ^[a-zA-Z]+([0-9]+)/([A-Z]+)/setup/players/nationality$ index.php?SERV=$1&action=setup_view&tab=players_nationality&LANG=$2 [QSA]
+RewriteRule ^[a-zA-Z]+([0-9]+)/([A-Z]+)/setup/players/nationality/([0-9]+)$ index.php?SERV=$1&action=setup_view&tab=players_nationality&LANG=$2&getPlayer=$3 [QSA]
+RewriteRule ^[a-zA-Z]+([0-9]+)/([A-Z]+)/setup/players/nationality/([0-9]+)/$ index.php?SERV=$1&action=setup_view&tab=players_nationality&LANG=$2&getPlayer=$3 [QSA]
+RewriteRule ^[a-zA-Z]+([0-9]+)/([A-Z]+)/setup/players/nationality/([0-9]+)/configure$ index.php?SERV=$1&action=setup_view&tab=players_nationality&LANG=$2&getPlayer=$3&configurePlayerPhoto [QSA]
+RewriteRule ^[a-zA-Z]+([0-9]+)/([A-Z]+)/setup/players/nationality/([0-9]+)/error/([0-9]+)$ index.php?SERV=$1&action=setup_view&tab=players_nationality&LANG=$2&getPlayer=$3&OptionError=$4 [QSA]
+
+
+RewriteRule ^[a-zA-Z]+([0-9]+)/([A-Z]+)/setup/players/photo$ index.php?SERV=$1&action=setup_view&tab=players_photo&LANG=$2 [QSA]
+RewriteRule ^[a-zA-Z]+([0-9]+)/([A-Z]+)/setup/players/photo/([0-9]+)$ index.php?SERV=$1&action=setup_view&tab=players_photo&LANG=$2&getPlayer=$3 [QSA]
+RewriteRule ^[a-zA-Z]+([0-9]+)/([A-Z]+)/setup/players/photo/([0-9]+)/$ index.php?SERV=$1&action=setup_view&tab=players_photo&LANG=$2&getPlayer=$3 [QSA]
+RewriteRule ^[a-zA-Z]+([0-9]+)/([A-Z]+)/setup/players/photo/([0-9]+)/configure$ index.php?SERV=$1&action=setup_view&tab=players_photo&LANG=$2&getPlayer=$3&configurePlayerPhoto [QSA]
+RewriteRule ^[a-zA-Z]+([0-9]+)/([A-Z]+)/setup/players/photo/([0-9]+)/error/([0-9]+)$ index.php?SERV=$1&action=setup_view&tab=players_photo&LANG=$2&getPlayer=$3&OptionError=$4 [QSA]
+
+RewriteRule ^[a-zA-Z]+([0-9]+)/([A-Z]+)/setup/players/rename$ index.php?SERV=$1&action=setup_view&tab=players_rename&LANG=$2 [QSA]
+RewriteRule ^[a-zA-Z]+([0-9]+)/([A-Z]+)/setup/players/rename/([0-9]+)$ index.php?SERV=$1&action=setup_view&tab=players_rename&LANG=$2&getPlayer=$3 [QSA]
+RewriteRule ^[a-zA-Z]+([0-9]+)/([A-Z]+)/setup/players/rename/([0-9]+)/$ index.php?SERV=$1&action=setup_view&tab=players_rename&LANG=$2&getPlayer=$3 [QSA]
+RewriteRule ^[a-zA-Z]+([0-9]+)/([A-Z]+)/setup/players/rename/([0-9]+)/configure$ index.php?SERV=$1&action=setup_view&tab=players_rename&LANG=$2&getPlayer=$3&configurePlayerRename [QSA]
+RewriteRule ^[a-zA-Z]+([0-9]+)/([A-Z]+)/setup/players/rename/([0-9]+)/error/([0-9]+)$ index.php?SERV=$1&action=setup_view&tab=players_rename&LANG=$2&getPlayer=$3&OptionError=$4 [QSA]
+
+
+RewriteRule ^[a-zA-Z]+([0-9]+)/([A-Z]+)/setup/team/rename$ index.php?SERV=$1&action=setup_view&tab=team_rename&LANG=$2 [QSA]
+RewriteRule ^[a-zA-Z]+([0-9]+)/([A-Z]+)/setup/team/rename$ index.php?SERV=$1&action=setup_view&tab=team_rename&LANG=$2 [QSA]
+RewriteRule ^[a-zA-Z]+([0-9]+)/([A-Z]+)/setup/team/rename/$ index.php?SERV=$1&action=setup_view&tab=team_rename&LANG=$2 [QSA]
+RewriteRule ^[a-zA-Z]+([0-9]+)/([A-Z]+)/setup/team/rename/configure$ index.php?SERV=$1&action=setup_view&tab=team_rename&LANG=$2&configureTeamRename [QSA]
+RewriteRule ^[a-zA-Z]+([0-9]+)/([A-Z]+)/setup/team/rename/error/([0-9]+)$ index.php?SERV=$1&action=setup_view&tab=team_rename&LANG=$2&OptionError=$3 [QSA]
+
+
+RewriteRule ^[a-zA-Z]+([0-9]+)/([A-Z]+)/setup/manager/assistant$ index.php?SERV=$1&action=setup_view&tab=manager_assistant&LANG=$2 [QSA]
+RewriteRule ^[a-zA-Z]+([0-9]+)/([A-Z]+)/setup/manager/assistant$ index.php?SERV=$1&action=setup_view&tab=manager_assistant&LANG=$2 [QSA]
+RewriteRule ^[a-zA-Z]+([0-9]+)/([A-Z]+)/setup/manager/assistant/$ index.php?SERV=$1&action=setup_view&tab=manager_assistant&LANG=$2 [QSA]
+RewriteRule ^[a-zA-Z]+([0-9]+)/([A-Z]+)/setup/manager/assistant/configure$ index.php?SERV=$1&action=setup_view&tab=manager_assistant&LANG=$2&configureTeamRename [QSA]
+RewriteRule ^[a-zA-Z]+([0-9]+)/([A-Z]+)/setup/manager/assistant/error/([0-9]+)$ index.php?SERV=$1&action=setup_view&tab=manager_assistant&LANG=$2&OptionError=$3 [QSA]
+
+RewriteRule ^[a-zA-Z]+([0-9]+)/([A-Z]+)/setup/club/terminate$ index.php?SERV=$1&action=setup_view&tab=club_terminate&LANG=$2 [QSA]
+RewriteRule ^[a-zA-Z]+([0-9]+)/([A-Z]+)/setup/club/terminate/players$ index.php?SERV=$1&action=setup_view&tab=club_terminate&LANG=$2&option=players [QSA]
+RewriteRule ^[a-zA-Z]+([0-9]+)/([A-Z]+)/setup/club/terminate/players/([0-9]+)/$ index.php?SERV=$1&action=setup_view&tab=club_terminate&LANG=$2&option=players&getID=$3 [QSA]
+RewriteRule ^[a-zA-Z]+([0-9]+)/([A-Z]+)/setup/club/terminate/staff$ index.php?SERV=$1&action=setup_view&tab=club_terminate&LANG=$2&option=staff [QSA]
+RewriteRule ^[a-zA-Z]+([0-9]+)/([A-Z]+)/setup/club/terminate/staff/([0-9]+)/$ index.php?SERV=$1&action=setup_view&tab=club_terminate&LANG=$2&option=staff&getID=$3 [QSA]
+
+RewriteRule ^[a-zA-Z]+([0-9]+)/([A-Z]+)/setup/players/recovery$ index.php?SERV=$1&action=setup_view&tab=players_recovery&LANG=$2 [QSA]
+RewriteRule ^[a-zA-Z]+([0-9]+)/([A-Z]+)/setup/players/recovery/([0-9]+)$ index.php?SERV=$1&action=setup_view&tab=players_recovery&LANG=$2&getPlayer=$3 [QSA]
+RewriteRule ^[a-zA-Z]+([0-9]+)/([A-Z]+)/setup/players/recovery/([0-9]+)/$ index.php?SERV=$1&action=setup_view&tab=players_recovery&LANG=$2&getPlayer=$3 [QSA]
+RewriteRule ^[a-zA-Z]+([0-9]+)/([A-Z]+)/setup/players/recovery/([0-9]+)/configure$ index.php?SERV=$1&action=setup_view&tab=players_recovery&LANG=$2&getPlayer=$3&configurePlayerRecovery [QSA]
+
+RewriteRule ^[a-zA-Z]+([0-9]+)/([A-Z]+)/setup/players/upgrade$ index.php?SERV=$1&action=setup_view&tab=players_upgrade&LANG=$2 [QSA]
+RewriteRule ^[a-zA-Z]+([0-9]+)/([A-Z]+)/setup/players/upgrade/([0-9]+)$ index.php?SERV=$1&action=setup_view&tab=players_upgrade&LANG=$2&getPlayer=$3 [QSA]
+RewriteRule ^[a-zA-Z]+([0-9]+)/([A-Z]+)/setup/players/upgrade/([0-9]+)/$ index.php?SERV=$1&action=setup_view&tab=players_upgrade&LANG=$2&getPlayer=$3 [QSA]
+RewriteRule ^[a-zA-Z]+([0-9]+)/([A-Z]+)/setup/players/upgrade/([0-9]+)/configure$ index.php?SERV=$1&action=setup_view&tab=players_upgrade&LANG=$2&getPlayer=$3&configureUpgrade [QSA]
+
+
+
+RewriteRule ^[a-zA-Z]+([0-9]+)/([A-Z]+)/manager/history$ index.php?SERV=$1&action=manager_view&tab=history&LANG=$2 [QSA]
+RewriteRule ^[a-zA-Z]+([0-9]+)/([A-Z]+)/manager/history/$ index.php?SERV=$1&action=manager_view&tab=history&LANG=$2 [QSA]
+RewriteRule ^[a-zA-Z]+([0-9]+)/([A-Z]+)/manager/tournaments$ index.php?SERV=$1&action=manager_view&tab=tournaments&LANG=$2 [QSA]
+RewriteRule ^[a-zA-Z]+([0-9]+)/([A-Z]+)/manager/tournaments/$ index.php?SERV=$1&action=manager_view&tab=tournaments&LANG=$2 [QSA]
+RewriteRule ^[a-zA-Z]+([0-9]+)/([A-Z]+)/manager/tournaments/completed$ index.php?SERV=$1&action=manager_view&tab=tournaments&LANG=$2&option=completed [QSA]
+RewriteRule ^[a-zA-Z]+([0-9]+)/([A-Z]+)/manager/tournaments/your$ index.php?SERV=$1&action=manager_view&tab=tournaments&LANG=$2&option=your [QSA]
+RewriteRule ^[a-zA-Z]+([0-9]+)/([A-Z]+)/manager/tournaments/add$ index.php?SERV=$1&action=manager_view&tab=tournaments&LANG=$2&option=add [QSA]
+##### MANAGER - END
+
+##### CLUB - BEGIN
+RewriteRule ^[a-zA-Z]+([0-9]+)/([A-Z]+)/club$ index.php?SERV=$1&action=club_view&tab=finances&LANG=$2 [QSA]
+RewriteRule ^[a-zA-Z]+([0-9]+)/([A-Z]+)/club/$ index.php?SERV=$1&action=club_view&tab=finances&LANG=$2 [QSA]
+RewriteRule ^[a-zA-Z]+([0-9]+)/([A-Z]+)/club/management$ index.php?SERV=$1&action=club_view&tab=management&LANG=$2 [QSA]
+RewriteRule ^[a-zA-Z]+([0-9]+)/([A-Z]+)/club/management/$ index.php?SERV=$1&action=club_view&tab=club_management&LANG=$2 [QSA]
+RewriteRule ^[a-zA-Z]+([0-9]+)/([A-Z]+)/club/finances$ index.php?SERV=$1&action=club_view&tab=finances&LANG=$2 [QSA]
+RewriteRule ^[a-zA-Z]+([0-9]+)/([A-Z]+)/club/finances/$ index.php?SERV=$1&action=club_view&tab=finances&LANG=$2 [QSA]
+RewriteRule ^[a-zA-Z]+([0-9]+)/([A-Z]+)/club/preview$ index.php?SERV=$1&action=club_view&tab=finances&option=preview&LANG=$2 [QSA]
+RewriteRule ^[a-zA-Z]+([0-9]+)/([A-Z]+)/club/preview/$ index.php?SERV=$1&action=club_view&tab=finances&option=preview&LANG=$2 [QSA]
+RewriteRule ^[a-zA-Z]+([0-9]+)/([A-Z]+)/club/bank_account$ index.php?SERV=$1&action=club_view&tab=finances&option=bank_account&LANG=$2 [QSA]
+RewriteRule ^[a-zA-Z]+([0-9]+)/([A-Z]+)/club/bank_account/$ index.php?SERV=$1&action=club_view&tab=finances&option=bank_account&LANG=$2 [QSA]
+RewriteRule ^[a-zA-Z]+([0-9]+)/([A-Z]+)/club/bank_account/([0-9]+)$ index.php?SERV=$1&action=club_view&tab=finances&option=bank_account&LANG=$2&page=$3 [QSA]
+RewriteRule ^[a-zA-Z]+([0-9]+)/([A-Z]+)/club/bank_account/([0-9]+)/$ index.php?SERV=$1&action=club_view&tab=finances&option=bank_account&LANG=$2&page=$3 [QSA]
+RewriteRule ^[a-zA-Z]+([0-9]+)/([A-Z]+)/club/bank_account/credit$ index.php?SERV=$1&action=club_view&tab=finances&option=bank_account&credit_bank_club&LANG=$2 [QSA]
+RewriteRule ^[a-zA-Z]+([0-9]+)/([A-Z]+)/club/configure$ index.php?SERV=$1&action=club_view&tab=finances&option=configure&LANG=$2 [QSA]
+RewriteRule ^[a-zA-Z]+([0-9]+)/([A-Z]+)/club/configure/$ index.php?SERV=$1&action=club_view&tab=finances&option=configure&LANG=$2 [QSA]
+RewriteRule ^[a-zA-Z]+([0-9]+)/([A-Z]+)/club/trainers$ index.php?SERV=$1&action=club_view&tab=trainers&LANG=$2 [QSA]
+RewriteRule ^[a-zA-Z]+([0-9]+)/([A-Z]+)/club/trainers/$ index.php?SERV=$1&action=club_view&tab=trainers&LANG=$2 [QSA]
+RewriteRule ^[a-zA-Z]+([0-9]+)/([A-Z]+)/club/trainers/negotiations$ index.php?SERV=$1&action=club_view&tab=trainers&option=negotiations&LANG=$2 [QSA]
+RewriteRule ^[a-zA-Z]+([0-9]+)/([A-Z]+)/club/database_players$ index.php?SERV=$1&action=club_view&tab=database_players&LANG=$2 [QSA]
+RewriteRule ^[a-zA-Z]+([0-9]+)/([A-Z]+)/club/database_players/$ index.php?SERV=$1&action=club_view&tab=database_players&LANG=$2 [QSA]
+RewriteRule ^[a-zA-Z]+([0-9]+)/([A-Z]+)/club/database_players/([0-9]+)$ index.php?SERV=$1&action=club_view&tab=database_players&LANG=$2&page=$3 [QSA]
+RewriteRule ^[a-zA-Z]+([0-9]+)/([A-Z]+)/club/database_players/([0-9]+)/$ index.php?SERV=$1&action=club_view&tab=database_players&LANG=$2&page=$3 [QSA]
+
+RewriteRule ^[a-zA-Z]+([0-9]+)/([A-Z]+)/club/transfer_list$ index.php?SERV=$1&action=club_view&tab=transfer_list&option=players_club&LANG=$2 [QSA]
+RewriteRule ^[a-zA-Z]+([0-9]+)/([A-Z]+)/club/transfer_list/$ index.php?SERV=$1&action=club_view&tab=transfer_list&option=players_club&LANG=$2 [QSA]
+RewriteRule ^[a-zA-Z]+([0-9]+)/([A-Z]+)/club/transfer_list/friends$ index.php?SERV=$1&action=club_view&tab=transfer_list&option=players_club_friends&LANG=$2 [QSA]
+RewriteRule ^[a-zA-Z]+([0-9]+)/([A-Z]+)/club/transfer_list/friends/$ index.php?SERV=$1&action=club_view&tab=transfer_list&option=players_club_friends&LANG=$2 [QSA]
+RewriteRule ^[a-zA-Z]+([0-9]+)/([A-Z]+)/club/transfer_list/world$ index.php?SERV=$1&action=club_view&tab=transfer_list&option=players_club_world&LANG=$2 [QSA]
+RewriteRule ^[a-zA-Z]+([0-9]+)/([A-Z]+)/club/transfer_list/world/$ index.php?SERV=$1&action=club_view&tab=transfer_list&option=players_club_world&LANG=$2 [QSA]
+
+RewriteRule ^[a-zA-Z]+([0-9]+)/([A-Z]+)/club/database_players/tests$ index.php?SERV=$1&action=club_view&tab=database_players&LANG=$2&testsList [QSA]
+RewriteRule ^[a-zA-Z]+([0-9]+)/([A-Z]+)/club/database_players/tests/$ index.php?SERV=$1&action=club_view&tab=database_players&LANG=$2&testsList [QSA]
+RewriteRule ^[a-zA-Z]+([0-9]+)/([A-Z]+)/club/database_players/tests/([0-9]+)$ index.php?SERV=$1&action=club_view&tab=database_players&LANG=$2&testsList&page=$3 [QSA]
+RewriteRule ^[a-zA-Z]+([0-9]+)/([A-Z]+)/club/database_players/tests/([0-9]+)/$ index.php?SERV=$1&action=club_view&tab=database_players&LANG=$2&testsList&page=$3 [QSA]
+RewriteRule ^[a-zA-Z]+([0-9]+)/([A-Z]+)/club/database_players/staff/([0-9]+)$ index.php?SERV=$1&action=club_view&tab=database_players&LANG=$2&staffID=$3 [QSA]
+RewriteRule ^[a-zA-Z]+([0-9]+)/([A-Z]+)/club/database_players/staff/([0-9]+)/$ index.php?SERV=$1&action=club_view&tab=database_players&LANG=$2&staffID=$3 [QSA]
+RewriteRule ^[a-zA-Z]+([0-9]+)/([A-Z]+)/club/database_players/staff/([0-9]+)/([0-9]+)$ index.php?SERV=$1&action=club_view&tab=database_players&LANG=$2&staffID=$3&page=$4 [QSA]
+RewriteRule ^[a-zA-Z]+([0-9]+)/([A-Z]+)/club/database_players/staff/([0-9]+)/([0-9]+)/$ index.php?SERV=$1&action=club_view&tab=database_players&LANG=$2&staffID=$3&page=$4 [QSA]
+
+RewriteRule ^[a-zA-Z]+([0-9]+)/([A-Z]+)/club/transfers$ index.php?SERV=$1&action=club_view&tab=transfers&LANG=$2 [QSA]
+RewriteRule ^[a-zA-Z]+([0-9]+)/([A-Z]+)/club/transfers/$ index.php?SERV=$1&action=club_view&tab=transfers&LANG=$2 [QSA]
+RewriteRule ^[a-zA-Z]+([0-9]+)/([A-Z]+)/club/transfers/([0-9]+)$ index.php?SERV=$1&action=club_view&tab=transfers&LANG=$2&page=$3 [QSA]
+RewriteRule ^[a-zA-Z]+([0-9]+)/([A-Z]+)/club/transfers/([0-9]+)/$ index.php?SERV=$1&action=club_view&tab=transfers&LANG=$2&page=$3 [QSA]
+RewriteRule ^[a-zA-Z]+([0-9]+)/([A-Z]+)/club/stadium$ index.php?SERV=$1&action=club_view&tab=stadium&LANG=$2 [QSA]
+RewriteRule ^[a-zA-Z]+([0-9]+)/([A-Z]+)/club/stadium/$ index.php?SERV=$1&action=club_view&tab=stadium&LANG=$2 [QSA]
+RewriteRule ^[a-zA-Z]+([0-9]+)/([A-Z]+)/club/stadium/statistics$ index.php?SERV=$1&action=club_view&tab=stadium&LANG=$2&option=statistics [QSA]
+RewriteRule ^[a-zA-Z]+([0-9]+)/([A-Z]+)/club/stadium/statistics/$ index.php?SERV=$1&action=club_view&tab=stadium&LANG=$2&option=statistics [QSA]
+RewriteRule ^[a-zA-Z]+([0-9]+)/([A-Z]+)/club/stadium/update/done$ index.php?SERV=$1&action=club_view&tab=stadium&LANG=$2&stadiumStatus=done [QSA]
+RewriteRule ^[a-zA-Z]+([0-9]+)/([A-Z]+)/club/stadium/update/error$ index.php?SERV=$1&action=club_view&tab=stadium&LANG=$2&stadiumStatus=error [QSA]
+RewriteRule ^[a-zA-Z]+([0-9]+)/([A-Z]+)/club/stadium/update/warning$ index.php?SERV=$1&action=club_view&tab=stadium&LANG=$2&stadiumStatus=warning [QSA]
+
+RewriteRule ^[a-zA-Z]+([0-9]+)/([A-Z]+)/club/stadium/update/pitch$ index.php?SERV=$1&action=club_view&tab=stadium&LANG=$2&stadiumUpdate=pitch [QSA]
+RewriteRule ^[a-zA-Z]+([0-9]+)/([A-Z]+)/club/stadium/update/top$ index.php?SERV=$1&action=club_view&tab=stadium&LANG=$2&stadiumUpdate=top [QSA]
+RewriteRule ^[a-zA-Z]+([0-9]+)/([A-Z]+)/club/stadium/update/bottom$ index.php?SERV=$1&action=club_view&tab=stadium&LANG=$2&stadiumUpdate=bottom [QSA]
+RewriteRule ^[a-zA-Z]+([0-9]+)/([A-Z]+)/club/stadium/update/left$ index.php?SERV=$1&action=club_view&tab=stadium&LANG=$2&stadiumUpdate=left [QSA]
+RewriteRule ^[a-zA-Z]+([0-9]+)/([A-Z]+)/club/stadium/update/right$ index.php?SERV=$1&action=club_view&tab=stadium&LANG=$2&stadiumUpdate=right [QSA]
+RewriteRule ^[a-zA-Z]+([0-9]+)/([A-Z]+)/club/stadium/update/stadium$ index.php?SERV=$1&action=club_view&tab=stadium&LANG=$2&stadiumUpdate=stadium [QSA]
+
+RewriteRule ^[a-zA-Z]+([0-9]+)/([A-Z]+)/club/history$ index.php?SERV=$1&action=club_view&tab=history&LANG=$2 [QSA]
+RewriteRule ^[a-zA-Z]+([0-9]+)/([A-Z]+)/club/history/$ index.php?SERV=$1&action=club_view&tab=history&LANG=$2 [QSA]
+RewriteRule ^[a-zA-Z]+([0-9]+)/([A-Z]+)/club/statistics$ index.php?SERV=$1&action=club_view&tab=statistics&LANG=$2 [QSA]
+RewriteRule ^[a-zA-Z]+([0-9]+)/([A-Z]+)/club/statistics/$ index.php?SERV=$1&action=club_view&tab=statistics&LANG=$2 [QSA]
+RewriteRule ^[a-zA-Z]+([0-9]+)/([A-Z]+)/club/sponsors$ index.php?SERV=$1&action=club_view&tab=sponsors&LANG=$2 [QSA]
+RewriteRule ^[a-zA-Z]+([0-9]+)/([A-Z]+)/club/sponsors/$ index.php?SERV=$1&action=club_view&tab=sponsors&LANG=$2 [QSA]
+RewriteRule ^[a-zA-Z]+([0-9]+)/([A-Z]+)/club/sponsors/current$ index.php?SERV=$1&action=club_view&tab=sponsors&LANG=$2&option=current [QSA]
+RewriteRule ^[a-zA-Z]+([0-9]+)/([A-Z]+)/club/sponsors/offers$ index.php?SERV=$1&action=club_view&tab=sponsors&LANG=$2&option=offers [QSA]
+RewriteRule ^[a-zA-Z]+([0-9]+)/([A-Z]+)/club/sponsors/offers/([0-9]+)$ index.php?SERV=$1&action=club_view&tab=sponsors&LANG=$2&option=offers&page=$3 [QSA] 
+RewriteRule ^[a-zA-Z]+([0-9]+)/([A-Z]+)/club/sponsors/offers/type1/([0-9]+)$ index.php?SERV=$1&action=club_view&tab=sponsors&LANG=$2&option=offers&page=$3&searchType1&searchOffer [QSA]
+RewriteRule ^[a-zA-Z]+([0-9]+)/([A-Z]+)/club/sponsors/offers/type2/([0-9]+)$ index.php?SERV=$1&action=club_view&tab=sponsors&LANG=$2&option=offers&page=$3&searchType2&searchOffer [QSA]
+RewriteRule ^[a-zA-Z]+([0-9]+)/([A-Z]+)/club/sponsors/offers/type3/([0-9]+)$ index.php?SERV=$1&action=club_view&tab=sponsors&LANG=$2&option=offers&page=$3&searchType3&searchOffer [QSA]
+RewriteRule ^[a-zA-Z]+([0-9]+)/([A-Z]+)/club/sponsors/offers/type4/([0-9]+)$ index.php?SERV=$1&action=club_view&tab=sponsors&LANG=$2&option=offers&page=$3&searchType4&searchOffer [QSA]
+RewriteRule ^[a-zA-Z]+([0-9]+)/([A-Z]+)/club/sponsors/offers/type5/([0-9]+)$ index.php?SERV=$1&action=club_view&tab=sponsors&LANG=$2&option=offers&page=$3&searchType5&searchOffer [QSA]
+RewriteRule ^[a-zA-Z]+([0-9]+)/([A-Z]+)/club/sponsors/offers/type6/([0-9]+)$ index.php?SERV=$1&action=club_view&tab=sponsors&LANG=$2&option=offers&page=$3&searchType6&searchOffer [QSA]
+RewriteRule ^[a-zA-Z]+([0-9]+)/([A-Z]+)/club/sponsors/offers/type7/([0-9]+)$ index.php?SERV=$1&action=club_view&tab=sponsors&LANG=$2&option=offers&page=$3&searchType7&searchOffer [QSA]
+RewriteRule ^[a-zA-Z]+([0-9]+)/([A-Z]+)/club/sponsors/offers/type8/([0-9]+)$ index.php?SERV=$1&action=club_view&tab=sponsors&LANG=$2&option=offers&page=$3&searchType8&searchOffer [QSA]
+RewriteRule ^[a-zA-Z]+([0-9]+)/([A-Z]+)/club/sponsors/offers/type1$ index.php?SERV=$1&action=club_view&tab=sponsors&LANG=$2&option=offers&searchType1&searchOffer [QSA]
+RewriteRule ^[a-zA-Z]+([0-9]+)/([A-Z]+)/club/sponsors/offers/type2$ index.php?SERV=$1&action=club_view&tab=sponsors&LANG=$2&option=offers&searchType2&searchOffer [QSA]
+RewriteRule ^[a-zA-Z]+([0-9]+)/([A-Z]+)/club/sponsors/offers/type3$ index.php?SERV=$1&action=club_view&tab=sponsors&LANG=$2&option=offers&searchType3&searchOffer [QSA]
+RewriteRule ^[a-zA-Z]+([0-9]+)/([A-Z]+)/club/sponsors/offers/type4$ index.php?SERV=$1&action=club_view&tab=sponsors&LANG=$2&option=offers&searchType4&searchOffer [QSA]
+RewriteRule ^[a-zA-Z]+([0-9]+)/([A-Z]+)/club/sponsors/offers/type5$ index.php?SERV=$1&action=club_view&tab=sponsors&LANG=$2&option=offers&searchType5&searchOffer [QSA]
+RewriteRule ^[a-zA-Z]+([0-9]+)/([A-Z]+)/club/sponsors/offers/type6$ index.php?SERV=$1&action=club_view&tab=sponsors&LANG=$2&option=offers&searchType6&searchOffer [QSA]
+RewriteRule ^[a-zA-Z]+([0-9]+)/([A-Z]+)/club/sponsors/offers/type7$ index.php?SERV=$1&action=club_view&tab=sponsors&LANG=$2&option=offers&searchType7&searchOffer [QSA]
+RewriteRule ^[a-zA-Z]+([0-9]+)/([A-Z]+)/club/sponsors/offers/type8$ index.php?SERV=$1&action=club_view&tab=sponsors&LANG=$2&option=offers&searchType8&searchOffer [QSA]
+RewriteRule ^[a-zA-Z]+([0-9]+)/([A-Z]+)/club/sponsors/offer/([0-9]+)$ index.php?SERV=$1&action=club_view&tab=sponsors&LANG=$2&option=offers&offerID=$3 [QSA]
+RewriteRule ^[a-zA-Z]+([0-9]+)/([A-Z]+)/club/sponsors/offer/([0-9]+)/$ index.php?SERV=$1&action=club_view&tab=sponsors&LANG=$2&option=offers&offerID=$3 [QSA]
+RewriteRule ^[a-zA-Z]+([0-9]+)/([A-Z]+)/club/sponsors/offer/([0-9]+)/agreement$ index.php?SERV=$1&action=club_view&tab=sponsors&LANG=$2&option=offers&offerID=$3&infoAgreement [QSA]
+RewriteRule ^[a-zA-Z]+([0-9]+)/([A-Z]+)/club/sponsors/offer/([0-9]+)/error$ index.php?SERV=$1&action=club_view&tab=sponsors&LANG=$2&option=offers&offerID=$3&infoError [QSA]
+RewriteRule ^[a-zA-Z]+([0-9]+)/([A-Z]+)/club/sponsors/offer/([0-9]+)/warning$ index.php?SERV=$1&action=club_view&tab=sponsors&LANG=$2&option=offers&offerID=$3&infoWarning [QSA]
+RewriteRule ^[a-zA-Z]+([0-9]+)/([A-Z]+)/club/sponsors/archive$ index.php?SERV=$1&action=club_view&tab=sponsors&LANG=$2&option=archive [QSA]
+RewriteRule ^[a-zA-Z]+([0-9]+)/([A-Z]+)/club/sponsors/archive/([0-9]+)$ index.php?SERV=$1&action=club_view&tab=sponsors&LANG=$2&option=archive&page=$3 [QSA]
+RewriteRule ^[a-zA-Z]+([0-9]+)/([A-Z]+)/club/colors$ index.php?SERV=$1&action=club_view&tab=colors&LANG=$2 [QSA]
+RewriteRule ^[a-zA-Z]+([0-9]+)/([A-Z]+)/club/colors/$ index.php?SERV=$1&action=club_view&tab=colors&LANG=$2 [QSA]
+RewriteRule ^[a-zA-Z]+([0-9]+)/([A-Z]+)/club/colors/setup/$ index.php?SERV=$1&action=club_view&tab=colors&LANG=$2&setupColors [QSA]
+RewriteRule ^[a-zA-Z]+([0-9]+)/([A-Z]+)/club/colors/update/home$ index.php?SERV=$1&action=club_view&tab=colors&LANG=$2&updateHome [QSA]
+RewriteRule ^[a-zA-Z]+([0-9]+)/([A-Z]+)/club/colors/update/away$ index.php?SERV=$1&action=club_view&tab=colors&LANG=$2&updateAway [QSA]
+##### CLUB - END
+
+##### COMPANY - BEGIN
+
+RewriteRule ^([A-Z]+)/company/([0-9]+)$ index.php?action=safeview_company_view&GET_COMPANY_ID=$2&LANG=$1&SAFE_VIEW [QSA]
+RewriteRule ^([A-Z]+)/company/([0-9]+)/profile$ index.php?action=safeview_company_view&tab=profile&GET_COMPANY_ID=$2&LANG=$1&SAFE_VIEW [QSA]
+
+RewriteRule ^[a-zA-Z]+([0-9]+)/([A-Z]+)/company/([0-9]+)$ index.php?SERV=$1&action=company_view&GET_COMPANY_ID=$3&LANG=$2 [QSA]
+RewriteRule ^[a-zA-Z]+([0-9]+)/([A-Z]+)/company/([0-9]+)/$ index.php?SERV=$1&action=company_view&GET_COMPANY_ID=$3&LANG=$2 [QSA]
+RewriteRule ^[a-zA-Z]+([0-9]+)/([A-Z]+)/company/([0-9]+)/profile$ index.php?SERV=$1&action=company_view&tab=profile&GET_COMPANY_ID=$3&LANG=$2 [QSA]
+
+##### COMPANY - END
+
+##### LEAGUE - BEGIN
+RewriteRule ^[a-zA-Z]+([0-9]+)/([A-Z]+)/league$ index.php?SERV=$1&action=league_view&tab=table&LANG=$2 [QSA]
+RewriteRule ^[a-zA-Z]+([0-9]+)/([A-Z]+)/league/$ index.php?SERV=$1&action=league_view&tab=table&LANG=$2 [QSA]
+RewriteRule ^[a-zA-Z]+([0-9]+)/([A-Z]+)/league/table$ index.php?SERV=$1&action=league_view&tab=table&LANG=$2 [QSA]
+RewriteRule ^[a-zA-Z]+([0-9]+)/([A-Z]+)/league/table/$ index.php?SERV=$1&action=league_view&tab=table&LANG=$2 [QSA]
+RewriteRule ^[a-zA-Z]+([0-9]+)/([A-Z]+)/league/fixtures$ index.php?SERV=$1&action=league_view&tab=fixtures&LANG=$2 [QSA]
+RewriteRule ^[a-zA-Z]+([0-9]+)/([A-Z]+)/league/fixtures/$ index.php?SERV=$1&action=league_view&tab=fixtures&LANG=$2 [QSA]
+RewriteRule ^[a-zA-Z]+([0-9]+)/([A-Z]+)/league/history$ index.php?SERV=$1&action=league_view&tab=history&LANG=$2 [QSA]
+RewriteRule ^[a-zA-Z]+([0-9]+)/([A-Z]+)/league/history/$ index.php?SERV=$1&action=league_view&tab=history&LANG=$2 [QSA]
+RewriteRule ^[a-zA-Z]+([0-9]+)/([A-Z]+)/league/information$ index.php?SERV=$1&action=league_view&tab=info&LANG=$2 [QSA]
+RewriteRule ^[a-zA-Z]+([0-9]+)/([A-Z]+)/league/information/$ index.php?SERV=$1&action=league_view&tab=info&LANG=$2 [QSA]
+
+#RewriteRule ^[a-zA-Z]+([0-9]+)/([A-Z]+)/league/stats$ index.php?SERV=$1&action=league_view&tab=stats&option=&LANG=$2 [QSA]
+#RewriteRule ^[a-zA-Z]+([0-9]+)/([A-Z]+)/league/stats/$ index.php?SERV=$1&action=league_view&tab=stats&LANG=$2 [QSA]
+
+RewriteRule ^[a-zA-Z]+([0-9]+)/([A-Z]+)/league/statistics$ index.php?SERV=$1&action=league_view&LANG=$2&tab=statistics&GET_GAME_ID=$3 [QSA]
+RewriteRule ^[a-zA-Z]+([0-9]+)/([A-Z]+)/league/statistics/$ index.php?SERV=$1&action=league_view&LANG=$2&tab=statistics&GET_GAME_ID=$3 [QSA]
+
+RewriteRule ^[a-zA-Z]+([0-9]+)/([A-Z]+)/league/statistics/goalscorers$ index.php?SERV=$1&action=league_view&LANG=$2&tab=statistics&option=goalscorers [QSA]
+RewriteRule ^[a-zA-Z]+([0-9]+)/([A-Z]+)/league/statistics/goalscorers/$ index.php?SERV=$1&action=league_view&LANG=$2&tab=statistics&option=goalscorers [QSA]
+RewriteRule ^[a-zA-Z]+([0-9]+)/([A-Z]+)/league/statistics/goalscorers/([0-9]+)$ index.php?SERV=$1&action=league_view&LANG=$2&tab=statistics&option=goalscorers&page=$3 [QSA]
+RewriteRule ^[a-zA-Z]+([0-9]+)/([A-Z]+)/league/statistics/goalscorers/([0-9]+)/$ index.php?SERV=$1&action=league_view&LANG=$2&tab=statistics&option=goalscorers&page=$3 [QSA]
+
+RewriteRule ^[a-zA-Z]+([0-9]+)/([A-Z]+)/league/statistics/yellowcards$ index.php?SERV=$1&action=league_view&LANG=$2&tab=statistics&option=yellowcards [QSA]
+RewriteRule ^[a-zA-Z]+([0-9]+)/([A-Z]+)/league/statistics/yellowcards/$ index.php?SERV=$1&action=league_view&LANG=$2&tab=statistics&option=yellowcards [QSA]
+RewriteRule ^[a-zA-Z]+([0-9]+)/([A-Z]+)/league/statistics/yellowcards/([0-9]+)$ index.php?SERV=$1&action=league_view&LANG=$2&tab=statistics&option=yellowcards&page=$3 [QSA]
+RewriteRule ^[a-zA-Z]+([0-9]+)/([A-Z]+)/league/statistics/yellowcards/([0-9]+)/$ index.php?SERV=$1&action=league_view&LANG=$2&tab=statistics&option=yellowcards&page=$3 [QSA]
+
+RewriteRule ^[a-zA-Z]+([0-9]+)/([A-Z]+)/league/statistics/redcards$ index.php?SERV=$1&action=league_view&LANG=$2&tab=statistics&option=redcards [QSA]
+RewriteRule ^[a-zA-Z]+([0-9]+)/([A-Z]+)/league/statistics/redcards/$ index.php?SERV=$1&action=league_view&LANG=$2&tab=statistics&option=redcards [QSA]
+RewriteRule ^[a-zA-Z]+([0-9]+)/([A-Z]+)/league/statistics/redcards/([0-9]+)$ index.php?SERV=$1&action=league_view&LANG=$2&tab=statistics&option=redcards&page=$3 [QSA]
+RewriteRule ^[a-zA-Z]+([0-9]+)/([A-Z]+)/league/statistics/redcards/([0-9]+)/$ index.php?SERV=$1&action=league_view&LANG=$2&tab=statistics&option=redcards&page=$3 [QSA]
+
+RewriteRule ^[a-zA-Z]+([0-9]+)/([A-Z]+)/league/statistics/assists$ index.php?SERV=$1&action=league_view&LANG=$2&tab=statistics&option=assists [QSA]
+RewriteRule ^[a-zA-Z]+([0-9]+)/([A-Z]+)/league/statistics/assists/$ index.php?SERV=$1&action=league_view&LANG=$2&tab=statistics&option=assists [QSA]
+RewriteRule ^[a-zA-Z]+([0-9]+)/([A-Z]+)/league/statistics/assists/([0-9]+)$ index.php?SERV=$1&action=league_view&LANG=$2&tab=statistics&option=assists&page=$3 [QSA]
+RewriteRule ^[a-zA-Z]+([0-9]+)/([A-Z]+)/league/statistics/assists/([0-9]+)/$ index.php?SERV=$1&action=league_view&LANG=$2&tab=statistics&option=assists&page=$3 [QSA]
+##
+
+
+RewriteRule ^[a-zA-Z]+([0-9]+)/([A-Z]+)/league/transfers$ index.php?SERV=$1&action=league_view&tab=transfers&LANG=$2 [QSA]
+RewriteRule ^[a-zA-Z]+([0-9]+)/([A-Z]+)/league/transfers/$ index.php?SERV=$1&action=league_view&tab=transfers&LANG=$2 [QSA]
+RewriteRule ^[a-zA-Z]+([0-9]+)/([A-Z]+)/league/transfers/([0-9]+)/$ index.php?SERV=$1&action=league_view&tab=transfers&LANG=$2&page=$3 [QSA]
+RewriteRule ^[a-zA-Z]+([0-9]+)/([A-Z]+)/league/transfers/([0-9]+)$ index.php?SERV=$1&action=league_view&tab=transfers&LANG=$2&page=$3 [QSA]
+
+
+
+##### LEAGUE - END
+
+##### KRAJE - BEGIN
+RewriteRule ^[a-zA-Z]+([0-9]+)/([A-Z]+)/country/([0-9]+)$ index.php?SERV=$1&action=country_view&tab=players&LANG=$2&GET_COUNTRY_ID=$3 [QSA]
+RewriteRule ^[a-zA-Z]+([0-9]+)/([A-Z]+)/country/([0-9]+)/$ index.php?SERV=$1&action=country_view&tab=players&LANG=$2&GET_COUNTRY_ID=$3 [QSA]
+##### KRAJE - END
+
+##### MATCH - BEGIN
+RewriteRule ^[a-zA-Z]+([0-9]+)/([A-Z]+)/match/([0-9]+)$ index.php?SERV=$1&action=match_view&tab=result&LANG=$2&GET_MATCH_ID=$3 [QSA]
+RewriteRule ^[a-zA-Z]+([0-9]+)/([A-Z]+)/match/([0-9]+)/$ index.php?SERV=$1&action=match_view&tab=result&LANG=$2&GET_MATCH_ID=$3 [QSA]
+RewriteRule ^[a-zA-Z]+([0-9]+)/([A-Z]+)/match/([0-9]+)/result$ index.php?SERV=$1&action=match_view&tab=result&LANG=$2&GET_MATCH_ID=$3 [QSA]
+RewriteRule ^[a-zA-Z]+([0-9]+)/([A-Z]+)/match/([0-9]+)/result/$ index.php?SERV=$1&action=match_view&tab=result&LANG=$2&GET_MATCH_ID=$3 [QSA]
+RewriteRule ^[a-zA-Z]+([0-9]+)/([A-Z]+)/match/([0-9]+)/report$ index.php?SERV=$1&action=match_view&tab=report&LANG=$2&GET_MATCH_ID=$3 [QSA]
+RewriteRule ^[a-zA-Z]+([0-9]+)/([A-Z]+)/match/([0-9]+)/report/$ index.php?SERV=$1&action=match_view&tab=report&LANG=$2&GET_MATCH_ID=$3 [QSA]
+RewriteRule ^[a-zA-Z]+([0-9]+)/([A-Z]+)/match/([0-9]+)/formations$ index.php?SERV=$1&action=match_view&tab=formations&LANG=$2&GET_MATCH_ID=$3 [QSA]
+RewriteRule ^[a-zA-Z]+([0-9]+)/([A-Z]+)/match/([0-9]+)/formations/$ index.php?SERV=$1&action=match_view&tab=formations&LANG=$2&GET_MATCH_ID=$3 [QSA]
+RewriteRule ^[a-zA-Z]+([0-9]+)/([A-Z]+)/match/([0-9]+)/squads$ index.php?SERV=$1&action=match_view&tab=squads&LANG=$2&GET_MATCH_ID=$3 [QSA]
+RewriteRule ^[a-zA-Z]+([0-9]+)/([A-Z]+)/match/([0-9]+)/squads/$ index.php?SERV=$1&action=match_view&tab=squads&LANG=$2&GET_MATCH_ID=$3 [QSA]
+RewriteRule ^[a-zA-Z]+([0-9]+)/([A-Z]+)/match/([0-9]+)/comments$ index.php?SERV=$1&action=match_view&tab=comments&LANG=$2&GET_MATCH_ID=$3 [QSA]
+RewriteRule ^[a-zA-Z]+([0-9]+)/([A-Z]+)/match/([0-9]+)/comments/$ index.php?SERV=$1&action=match_view&tab=comments&LANG=$2&GET_MATCH_ID=$3 [QSA]
+
+RewriteRule ^[a-zA-Z]+([0-9]+)/([A-Z]+)/match/invitations/friendly/invite/([0-9]+)/status/accept$ index.php?SERV=$1&action=match_invites&LANG=$2&GET_INVITE_ID=$3&GET_INVITE_STATUS=accept&typeMatch=friendly [QSA]
+RewriteRule ^[a-zA-Z]+([0-9]+)/([A-Z]+)/match/invitations/friendly/invite/([0-9]+)/status/resign$ index.php?SERV=$1&action=match_invites&LANG=$2&GET_INVITE_ID=$3&GET_INVITE_STATUS=resign&typeMatch=friendly [QSA]
+RewriteRule ^[a-zA-Z]+([0-9]+)/([A-Z]+)/match/invitations/friendly/accept/send$ index.php?SERV=$1&action=match_invites&LANG=$2&GET_INVITE_STATUS=accept_send&typeMatch=friendly [QSA]
+RewriteRule ^[a-zA-Z]+([0-9]+)/([A-Z]+)/match/invitations/friendly/accept/error$ index.php?SERV=$1&action=match_invites&LANG=$2&GET_INVITE_STATUS=accept_error&typeMatch=friendly [QSA]
+RewriteRule ^[a-zA-Z]+([0-9]+)/([A-Z]+)/match/invitations/friendly/resign/send$ index.php?SERV=$1&action=match_invites&LANG=$2&GET_INVITE_STATUS=resign_send&typeMatch=friendly [QSA]
+RewriteRule ^[a-zA-Z]+([0-9]+)/([A-Z]+)/match/invitations/friendly/resing/error$ index.php?SERV=$1&action=match_invites&LANG=$2&GET_INVITE_STATUS=resign_error&typeMatch=friendly [QSA]
+
+RewriteRule ^[a-zA-Z]+([0-9]+)/([A-Z]+)/match/invitations/amateur/invite/([0-9]+)/status/accept$ index.php?SERV=$1&action=match_invites&LANG=$2&GET_INVITE_ID=$3&GET_INVITE_STATUS=accept&typeMatch=amateur [QSA]
+RewriteRule ^[a-zA-Z]+([0-9]+)/([A-Z]+)/match/invitations/amateur/invite/([0-9]+)/status/resign$ index.php?SERV=$1&action=match_invites&LANG=$2&GET_INVITE_ID=$3&GET_INVITE_STATUS=resign&typeMatch=amateur [QSA]
+RewriteRule ^[a-zA-Z]+([0-9]+)/([A-Z]+)/match/invitations/amateur/accept/send$ index.php?SERV=$1&action=match_invites&LANG=$2&GET_INVITE_STATUS=accept_send&typeMatch=amateur [QSA]
+RewriteRule ^[a-zA-Z]+([0-9]+)/([A-Z]+)/match/invitations/amateur/accept/error$ index.php?SERV=$1&action=match_invites&LANG=$2&GET_INVITE_STATUS=accept_error&typeMatch=amateur [QSA]
+RewriteRule ^[a-zA-Z]+([0-9]+)/([A-Z]+)/match/invitations/amateur/resign/send$ index.php?SERV=$1&action=match_invites&LANG=$2&GET_INVITE_STATUS=resign_send&typeMatch=amateur [QSA]
+RewriteRule ^[a-zA-Z]+([0-9]+)/([A-Z]+)/match/invitations/amateur/resing/error$ index.php?SERV=$1&action=match_invites&LANG=$2&GET_INVITE_STATUS=resign_error&typeMatch=amateur [QSA]
+
+RewriteRule ^[a-zA-Z]+([0-9]+)/([A-Z]+)/match/invitations$ index.php?SERV=$1&action=match_invites&LANG=$2 [QSA]
+RewriteRule ^[a-zA-Z]+([0-9]+)/([A-Z]+)/match/invitations/$ index.php?SERV=$1&action=match_invites&LANG=$2 [QSA]
+RewriteRule ^[a-zA-Z]+([0-9]+)/([A-Z]+)/match/invitations/accept$ index.php?SERV=$1&action=match_invites&tab=accept&LANG=$2 [QSA]
+RewriteRule ^[a-zA-Z]+([0-9]+)/([A-Z]+)/match/invitations/accept/$ index.php?SERV=$1&action=match_invites&tab=accept&LANG=$2 [QSA]
+RewriteRule ^[a-zA-Z]+([0-9]+)/([A-Z]+)/match/invitations/resign$ index.php?SERV=$1&action=match_invites&tab=resign&LANG=$2 [QSA]
+RewriteRule ^[a-zA-Z]+([0-9]+)/([A-Z]+)/match/invitations/resign/$ index.php?SERV=$1&action=match_invites&tab=resign&LANG=$2 [QSA]
+
+RewriteRule ^[a-zA-Z]+([0-9]+)/([A-Z]+)/match/invitations/([0-9]+)$ index.php?SERV=$1&action=match_invites&LANG=$2&page=$3 [QSA]
+RewriteRule ^[a-zA-Z]+([0-9]+)/([A-Z]+)/match/invitations/([0-9]+)/$ index.php?SERV=$1&action=match_invites&LANG=$2&page=$3 [QSA]
+RewriteRule ^[a-zA-Z]+([0-9]+)/([A-Z]+)/match/invitations/accept/([0-9]+)$ index.php?SERV=$1&action=match_invites&tab=accept&LANG=$2&page=$3 [QSA]
+RewriteRule ^[a-zA-Z]+([0-9]+)/([A-Z]+)/match/invitations/accept/([0-9]+)/$ index.php?SERV=$1&action=match_invites&tab=accept&LANG=$2&page=$3 [QSA]
+RewriteRule ^[a-zA-Z]+([0-9]+)/([A-Z]+)/match/invitations/resign/([0-9]+)$ index.php?SERV=$1&action=match_invites&tab=resign&LANG=$2&page=$3 [QSA]
+RewriteRule ^[a-zA-Z]+([0-9]+)/([A-Z]+)/match/invitations/resign/([0-9]+)/$ index.php?SERV=$1&action=match_invites&tab=resign&LANG=$2&page=$3 [QSA]
+
+##### MATCH - END
+
+##### ZAWODNICY - BEGIN
+RewriteRule ^[a-zA-Z]+([0-9]+)/([A-Z]+)/player/([0-9]+)$ index.php?SERV=$1&action=player_view&tab=profile&LANG=$2&GET_PLAYER_ID=$3 [QSA]
+RewriteRule ^[a-zA-Z]+([0-9]+)/([A-Z]+)/player/([0-9]+)/$ index.php?SERV=$1&action=player_view&tab=profile&LANG=$2&GET_PLAYER_ID=$3 [QSA]
+RewriteRule ^[a-zA-Z]+([0-9]+)/([A-Z]+)/player/([0-9]+)/nationality$ index.php?SERV=$1&action=player_view&tab=profile&LANG=$2&GET_PLAYER_ID=$3&option=change_nationality [QSA]
+RewriteRule ^[a-zA-Z]+([0-9]+)/([A-Z]+)/player/([0-9]+)/psychologist/([0-9]+)$ index.php?SERV=$1&action=player_view&tab=profile&LANG=$2&GET_PLAYER_ID=$3&GET_PSYHO=$4 [QSA]
+RewriteRule ^[a-zA-Z]+([0-9]+)/([A-Z]+)/player/([0-9]+)/psychologist/done$ index.php?SERV=$1&action=player_view&tab=profile&LANG=$2&GET_PLAYER_ID=$3&doneOption [QSA]
+RewriteRule ^[a-zA-Z]+([0-9]+)/([A-Z]+)/player/([0-9]+)/psychologist/warning$ index.php?SERV=$1&action=player_view&tab=profile&LANG=$2&GET_PLAYER_ID=$3&warningOption [QSA]
+RewriteRule ^[a-zA-Z]+([0-9]+)/([A-Z]+)/player/([0-9]+)/rename$ index.php?SERV=$1&action=player_view&tab=profile&&option=player_rename&LANG=$2&GET_PLAYER_ID=$3 [QSA]
+RewriteRule ^[a-zA-Z]+([0-9]+)/([A-Z]+)/player/([0-9]+)/information$ index.php?SERV=$1&action=player_view&tab=information&LANG=$2&GET_PLAYER_ID=$3 [QSA]
+RewriteRule ^[a-zA-Z]+([0-9]+)/([A-Z]+)/player/([0-9]+)/information/$ index.php?SERV=$1&action=player_view&tab=information&LANG=$2&GET_PLAYER_ID=$3 [QSA]
+RewriteRule ^[a-zA-Z]+([0-9]+)/([A-Z]+)/player/([0-9]+)/upgrade$ index.php?SERV=$1&action=player_view&tab=profile&UpgradeThisPlayer&LANG=$2&GET_PLAYER_ID=$3 [QSA]
+RewriteRule ^[a-zA-Z]+([0-9]+)/([A-Z]+)/player/([0-9]+)/upgrade/$ index.php?SERV=$1&action=player_view&tab=profile&UpgradeThisPlayer&LANG=$2&GET_PLAYER_ID=$3 [QSA]
+RewriteRule ^[a-zA-Z]+([0-9]+)/([A-Z]+)/player/([0-9]+)/history$ index.php?SERV=$1&action=player_view&tab=history&LANG=$2&GET_PLAYER_ID=$3 [QSA]
+RewriteRule ^[a-zA-Z]+([0-9]+)/([A-Z]+)/player/([0-9]+)/history/$ index.php?SERV=$1&action=player_view&tab=history&LANG=$2&GET_PLAYER_ID=$3 [QSA]
+RewriteRule ^[a-zA-Z]+([0-9]+)/([A-Z]+)/player/([0-9]+)/history/contracts$ index.php?SERV=$1&action=player_view&tab=history&LANG=$2&GET_PLAYER_ID=$3&option=contracts [QSA]
+RewriteRule ^[a-zA-Z]+([0-9]+)/([A-Z]+)/player/([0-9]+)/history/contracts/$ index.php?SERV=$1&action=player_view&tab=history&LANG=$2&GET_PLAYER_ID=$3&option=contracts [QSA]
+RewriteRule ^[a-zA-Z]+([0-9]+)/([A-Z]+)/player/([0-9]+)/terminate$ index.php?SERV=$1&action=player_view&tab=profile&LANG=$2&GET_PLAYER_ID=$3&terminatePlayer [QSA]
+RewriteRule ^[a-zA-Z]+([0-9]+)/([A-Z]+)/player/([0-9]+)/terminate/done$ index.php?SERV=$1&action=player_view&tab=profile&LANG=$2&GET_PLAYER_ID=$3&terminatePlayerDone [QSA]
+RewriteRule ^[a-zA-Z]+([0-9]+)/([A-Z]+)/player/([0-9]+)/terminate/warning$ index.php?SERV=$1&action=player_view&tab=profile&LANG=$2&GET_PLAYER_ID=$3&terminatePlayerWarning [QSA]
+
+RewriteRule ^[a-zA-Z]+([0-9]+)/([A-Z]+)/player/([0-9]+)/terminate-now$ index.php?SERV=$1&action=player_view&tab=profile&LANG=$2&GET_PLAYER_ID=$3&terminatePlayerNow [QSA]
+RewriteRule ^[a-zA-Z]+([0-9]+)/([A-Z]+)/player/([0-9]+)/terminate-now/done$ index.php?SERV=$1&action=player_view&tab=profile&LANG=$2&GET_PLAYER_ID=$3&terminatePlayerNowDone [QSA]
+RewriteRule ^[a-zA-Z]+([0-9]+)/([A-Z]+)/player/([0-9]+)/terminate-now/warning$ index.php?SERV=$1&action=player_view&tab=profile&LANG=$2&GET_PLAYER_ID=$3&terminatePlayerNowWarning [QSA]
+
+RewriteRule ^[a-zA-Z]+([0-9]+)/([A-Z]+)/player/([0-9]+)/added_to_observed$ index.php?SERV=$1&action=player_view&tab=profile&LANG=$2&option=added_to_observed&GET_PLAYER_ID=$3 [QSA]
+
+RewriteRule ^[a-zA-Z]+([0-9]+)/([A-Z]+)/player/([0-9]+)/transfer/jobless/accept$ index.php?SERV=$1&action=player_view&tab=profile&LANG=$2&option=jobblesAccept&GET_PLAYER_ID=$3 [QSA]
+RewriteRule ^[a-zA-Z]+([0-9]+)/([A-Z]+)/player/([0-9]+)/transfer/jobless/reject$ index.php?SERV=$1&action=player_view&tab=profile&LANG=$2&option=jobblesReject&GET_PLAYER_ID=$3 [QSA]
+
+RewriteRule ^[a-zA-Z]+([0-9]+)/([A-Z]+)/player/([0-9]+)/tests$ index.php?SERV=$1&action=player_view&LANG=$2&tab=profile&option=tests&GET_PLAYER_ID=$3 [QSA]
+RewriteRule ^[a-zA-Z]+([0-9]+)/([A-Z]+)/player/([0-9]+)/tests/done$ index.php?SERV=$1&action=player_view&LANG=$2&tab=profile&option=tests&GET_PLAYER_ID=$3&infoDone [QSA]
+RewriteRule ^[a-zA-Z]+([0-9]+)/([A-Z]+)/player/([0-9]+)/tests/refusal$ index.php?SERV=$1&action=player_view&LANG=$2&tab=profile&option=tests&GET_PLAYER_ID=$3&infoRefusal [QSA]
+RewriteRule ^[a-zA-Z]+([0-9]+)/([A-Z]+)/player/([0-9]+)/tests/error$ index.php?SERV=$1&action=player_view&LANG=$2&tab=profile&option=tests&GET_PLAYER_ID=$3&infoError [QSA]
+RewriteRule ^[a-zA-Z]+([0-9]+)/([A-Z]+)/player/([0-9]+)/tests/refusal/([0-9]+)$ index.php?SERV=$1&action=player_view&LANG=$2&tab=profile&option=tests&GET_PLAYER_ID=$3&testCode=$4&infoRefusal [QSA]
+RewriteRule ^[a-zA-Z]+([0-9]+)/([A-Z]+)/player/([0-9]+)/hire$ index.php?SERV=$1&action=player_view&LANG=$2&tab=hire&GET_PLAYER_ID=$3 [QSA]
+RewriteRule ^[a-zA-Z]+([0-9]+)/([A-Z]+)/player/([0-9]+)/hire/([0-9]+)/update$ index.php?SERV=$1&action=player_view&LANG=$2&tab=hire&GET_PLAYER_ID=$3&GET_OFFER_ID=$4 [QSA]
+RewriteRule ^[a-zA-Z]+([0-9]+)/([A-Z]+)/player/([0-9]+)/hire/([0-9]+)/update/warning/salary$ index.php?SERV=$1&action=player_view&LANG=$2&tab=hire&GET_PLAYER_ID=$3&GET_OFFER_ID=$4&warning=salary [QSA]
+RewriteRule ^[a-zA-Z]+([0-9]+)/([A-Z]+)/player/([0-9]+)/hire/error$ index.php?SERV=$1&action=player_view&LANG=$2&tab=hire&GET_PLAYER_ID=$3&OptionError [QSA]
+RewriteRule ^[a-zA-Z]+([0-9]+)/([A-Z]+)/player/([0-9]+)/hire/done$ index.php?SERV=$1&action=player_view&LANG=$2&tab=hire&GET_PLAYER_ID=$3&OptionDone [QSA]
+RewriteRule ^[a-zA-Z]+([0-9]+)/([A-Z]+)/player/([0-9]+)/hire/warning/salary$ index.php?SERV=$1&action=player_view&LANG=$2&tab=hire&GET_PLAYER_ID=$3&warning=salary [QSA]
+
+RewriteRule ^[a-zA-Z]+([0-9]+)/([A-Z]+)/player/([0-9]+)/transfer$ index.php?SERV=$1&action=player_view&LANG=$2&tab=transfer&GET_PLAYER_ID=$3 [QSA] 
+RewriteRule ^[a-zA-Z]+([0-9]+)/([A-Z]+)/player/([0-9]+)/transfer/done$ index.php?SERV=$1&action=player_view&LANG=$2&tab=transfer&GET_PLAYER_ID=$3&OptionDone [QSA]
+RewriteRule ^[a-zA-Z]+([0-9]+)/([A-Z]+)/player/([0-9]+)/transfer/error$ index.php?SERV=$1&action=player_view&LANG=$2&tab=transfer&GET_PLAYER_ID=$3&OptionError [QSA]
+RewriteRule ^[a-zA-Z]+([0-9]+)/([A-Z]+)/player/([0-9]+)/transfer/warning$ index.php?SERV=$1&action=player_view&LANG=$2&tab=transfer&GET_PLAYER_ID=$3&OptionWarningSalary [QSA]
+RewriteRule ^[a-zA-Z]+([0-9]+)/([A-Z]+)/player/([0-9]+)/transfer/warning/exceeded_budget$ index.php?SERV=$1&action=player_view&LANG=$2&tab=transfer&GET_PLAYER_ID=$3&OptionWarning=exceeded_budget [QSA]
+RewriteRule ^[a-zA-Z]+([0-9]+)/([A-Z]+)/player/([0-9]+)/transfer/warning/salary$ index.php?SERV=$1&action=player_view&LANG=$2&tab=transfer&GET_PLAYER_ID=$3&warning=salary [QSA]
+RewriteRule ^[a-zA-Z]+([0-9]+)/([A-Z]+)/player/([0-9]+)/information/recovery$ index.php?SERV=$1&action=player_view&tab=information&LANG=$2&option=player_recovery&GET_PLAYER_ID=$3 [QSA]
+
+RewriteRule ^[a-zA-Z]+([0-9]+)/([A-Z]+)/player/([0-9]+)/transfer/offers$ index.php?SERV=$1&action=player_view&LANG=$2&tab=offers&GET_PLAYER_ID=$3 [QSA]
+RewriteRule ^[a-zA-Z]+([0-9]+)/([A-Z]+)/player/([0-9]+)/transfer/offers/$ index.php?SERV=$1&action=player_view&LANG=$2&tab=offers&GET_PLAYER_ID=$3 [QSA]
+RewriteRule ^[a-zA-Z]+([0-9]+)/([A-Z]+)/player/([0-9]+)/transfer/offers/([0-9]+)$ index.php?SERV=$1&action=player_view&LANG=$2&tab=offers&GET_PLAYER_ID=$3&page=$4 [QSA]
+RewriteRule ^[a-zA-Z]+([0-9]+)/([A-Z]+)/player/([0-9]+)/transfer/offers/([0-9]+)/accept$ index.php?SERV=$1&action=player_view&LANG=$2&tab=offers&GET_PLAYER_ID=$3&offerTransfer=$4&offerAccept [QSA]
+RewriteRule ^[a-zA-Z]+([0-9]+)/([A-Z]+)/player/([0-9]+)/transfer/offers/([0-9]+)/reject$ index.php?SERV=$1&action=player_view&LANG=$2&tab=offers&GET_PLAYER_ID=$3&offerTransfer=$4&offerReject [QSA]
+RewriteRule ^[a-zA-Z]+([0-9]+)/([A-Z]+)/player/([0-9]+)/transfer/offers/error$ index.php?SERV=$1&action=player_view&LANG=$2&tab=offers&GET_PLAYER_ID=$3&offerError [QSA]
+
+RewriteRule ^[a-zA-Z]+([0-9]+)/([A-Z]+)/player/([0-9]+)/transfer/offers/([0-9]+)/confirm/accept$ index.php?SERV=$1&action=player_view&LANG=$2&tab=offers&GET_PLAYER_ID=$3&offerTransfer=$4&ConfirmOfferAccept [QSA]
+RewriteRule ^[a-zA-Z]+([0-9]+)/([A-Z]+)/player/([0-9]+)/transfer/offers/([0-9]+)/confirm/reject$ index.php?SERV=$1&action=player_view&LANG=$2&tab=offers&GET_PLAYER_ID=$3&offerTransfer=$4&ConfirmOfferReject [QSA]
+
+RewriteRule ^[a-zA-Z]+([0-9]+)/([A-Z]+)/player/([0-9]+)/transfer/offers/([0-9]+)/jobless/accept$ index.php?SERV=$1&action=player_view&LANG=$2&tab=offers&GET_PLAYER_ID=$3&offerTransfer=$4&JoblessOfferAccept [QSA]
+RewriteRule ^[a-zA-Z]+([0-9]+)/([A-Z]+)/player/([0-9]+)/transfer/offers/([0-9]+)/jobless/reject$ index.php?SERV=$1&action=player_view&LANG=$2&tab=offers&GET_PLAYER_ID=$3&offerTransfer=$4&JoblessOfferReject [QSA]
+
+RewriteRule ^[a-zA-Z]+([0-9]+)/([A-Z]+)/player/([0-9]+)/transfer/offers/([0-9]+)/update$ index.php?SERV=$1&action=player_view&LANG=$2&tab=transfer&option=contract&GET_PLAYER_ID=$3&showUpdateOffer=$4 [QSA]
+
+RewriteRule ^[a-zA-Z]+([0-9]+)/([A-Z]+)/staff/([0-9]+)/transfer/offers/([0-9]+)/accept$ index.php?SERV=$1&action=staff_view&LANG=$2&tab=transfer&GET_STAFF_ID=$3&offerTransfer=$4&ConfirmOfferAccept [QSA] 
+RewriteRule ^[a-zA-Z]+([0-9]+)/([A-Z]+)/staff/([0-9]+)/transfer/offers/([0-9]+)/reject$ index.php?SERV=$1&action=staff_view&LANG=$2&tab=transfer&GET_STAFF_ID=$3&offerTransfer=$4&ConfirmOfferReject [QSA] 
+
+RewriteRule ^[a-zA-Z]+([0-9]+)/([A-Z]+)/staff/([0-9]+)/transfer/offers/([0-9]+)/update$ index.php?SERV=$1&action=staff_view&LANG=$2&tab=transfer&GET_STAFF_ID=$3&showUpdateOffer=$4 [QSA] 
+
+RewriteRule ^[a-zA-Z]+([0-9]+)/([A-Z]+)/staff/([0-9]+)/accept$ index.php?SERV=$1&action=staff_view&LANG=$2&tab=profile&GET_STAFF_ID=$3&staffDoneInfo [QSA] 
+RewriteRule ^[a-zA-Z]+([0-9]+)/([A-Z]+)/staff/([0-9]+)/reject$ index.php?SERV=$1&action=staff_view&LANG=$2&tab=profile&GET_STAFF_ID=$3&staffRejectInfo [QSA] 
+
+
+
+RewriteRule ^[a-zA-Z]+([0-9]+)/([A-Z]+)/player/([0-9]+)/transfer/contract$ index.php?SERV=$1&action=player_view&LANG=$2&tab=transfer&option=contract&GET_PLAYER_ID=$3 [QSA]
+RewriteRule ^[a-zA-Z]+([0-9]+)/([A-Z]+)/player/([0-9]+)/transfer/contract/send$ index.php?SERV=$1&action=player_view&LANG=$2&tab=transfer&option=contract&GET_PLAYER_ID=$3&contractSend [QSA]
+RewriteRule ^[a-zA-Z]+([0-9]+)/([A-Z]+)/player/([0-9]+)/transfer/contract/error$ index.php?SERV=$1&action=player_view&LANG=$2&tab=transfer&option=contract&GET_PLAYER_ID=$3&contractError [QSA]
+RewriteRule ^[a-zA-Z]+([0-9]+)/([A-Z]+)/player/([0-9]+)/transfer/contract/warning/salary$ index.php?SERV=$1&action=player_view&LANG=$2&tab=transfer&option=contract&GET_PLAYER_ID=$3&warning=salary [QSA]
+RewriteRule ^[a-zA-Z]+([0-9]+)/([A-Z]+)/player/([0-9]+)/contract$ index.php?SERV=$1&action=player_view&LANG=$2&tab=contract&GET_PLAYER_ID=$3 [QSA]
+RewriteRule ^[a-zA-Z]+([0-9]+)/([A-Z]+)/player/([0-9]+)/contract/$ index.php?SERV=$1&action=player_view&LANG=$2&tab=contract&GET_PLAYER_ID=$3 [QSA]
+RewriteRule ^[a-zA-Z]+([0-9]+)/([A-Z]+)/player/([0-9]+)/contract/warning/salary$ index.php?SERV=$1&action=player_view&LANG=$2&tab=contract&GET_PLAYER_ID=$3&warning=salary [QSA]
+
+RewriteRule ^[a-zA-Z]+([0-9]+)/([A-Z]+)/player/([0-9]+)/contract/done$ index.php?SERV=$1&action=player_view&LANG=$2&tab=contract&GET_PLAYER_ID=$3&OptionDone [QSA]
+RewriteRule ^[a-zA-Z]+([0-9]+)/([A-Z]+)/player/([0-9]+)/contract/done/$ index.php?SERV=$1&action=player_view&LANG=$2&tab=contract&GET_PLAYER_ID=$3&OptionDone [QSA]
+RewriteRule ^[a-zA-Z]+([0-9]+)/([A-Z]+)/player/([0-9]+)/contract/error$ index.php?SERV=$1&action=player_view&LANG=$2&tab=contract&GET_PLAYER_ID=$3&OptionError [QSA]
+RewriteRule ^[a-zA-Z]+([0-9]+)/([A-Z]+)/player/([0-9]+)/contract/error/$ index.php?SERV=$1&action=player_view&LANG=$2&tab=contract&GET_PLAYER_ID=$3&OptionError [QSA]
+RewriteRule ^[a-zA-Z]+([0-9]+)/([A-Z]+)/player/([0-9]+)/contract/update$ index.php?SERV=$1&action=player_view&LANG=$2&tab=contract&GET_PLAYER_ID=$3&OptionUpdate [QSA]
+RewriteRule ^[a-zA-Z]+([0-9]+)/([A-Z]+)/player/([0-9]+)/contract/update/$ index.php?SERV=$1&action=player_view&LANG=$2&tab=contract&GET_PLAYER_ID=$3&OptionUpdate [QSA]
+
+
+RewriteRule ^[a-zA-Z]+([0-9]+)/([A-Z]+)/player/([0-9]+)/scout$ index.php?SERV=$1&action=player_view&LANG=$2&tab=scout&GET_PLAYER_ID=$3 [QSA]
+RewriteRule ^[a-zA-Z]+([0-9]+)/([A-Z]+)/player/([0-9]+)/scout/$ index.php?SERV=$1&action=player_view&LANG=$2&tab=scout&GET_PLAYER_ID=$3 [QSA]
+RewriteRule ^[a-zA-Z]+([0-9]+)/([A-Z]+)/player/([0-9]+)/scout/done$ index.php?SERV=$1&action=player_view&LANG=$2&tab=scout&OptionDone&GET_PLAYER_ID=$3 [QSA]
+RewriteRule ^[a-zA-Z]+([0-9]+)/([A-Z]+)/player/([0-9]+)/scout/error$ index.php?SERV=$1&action=player_view&LANG=$2&tab=scout&OptionError&GET_PLAYER_ID=$3 [QSA]
+RewriteRule ^[a-zA-Z]+([0-9]+)/([A-Z]+)/player/([0-9]+)/scout/warning$ index.php?SERV=$1&action=player_view&LANG=$2&tab=scout&OptionWarning&GET_PLAYER_ID=$3 [QSA]
+
+##### ZAWODNICY - END
+
+##### PRACOWNICY - BEGIN
+RewriteRule ^[a-zA-Z]+([0-9]+)/([A-Z]+)/staff/([0-9]+)$ index.php?SERV=$1&action=staff_view&tab=profile&LANG=$2&GET_STAFF_ID=$3 [QSA]
+RewriteRule ^[a-zA-Z]+([0-9]+)/([A-Z]+)/staff/([0-9]+)/$ index.php?SERV=$1&action=staff_view&tab=profile&LANG=$2&GET_STAFF_ID=$3 [QSA]
+RewriteRule ^[a-zA-Z]+([0-9]+)/([A-Z]+)/staff/([0-9]+)/terminate$ index.php?SERV=$1&action=staff_view&tab=profile&LANG=$2&GET_STAFF_ID=$3&terminateStaff [QSA]
+RewriteRule ^[a-zA-Z]+([0-9]+)/([A-Z]+)/staff/([0-9]+)/terminate/done$ index.php?SERV=$1&action=staff_view&tab=profile&LANG=$2&GET_STAFF_ID=$3&terminateStaffDone [QSA]
+
+RewriteRule ^[a-zA-Z]+([0-9]+)/([A-Z]+)/staff/([0-9]+)/terminate-now$ index.php?SERV=$1&action=staff_view&tab=profile&LANG=$2&GET_STAFF_ID=$3&terminateStaffNow [QSA]
+RewriteRule ^[a-zA-Z]+([0-9]+)/([A-Z]+)/staff/([0-9]+)/terminatenow/done$ index.php?SERV=$1&action=staff_view&tab=profile&LANG=$2&GET_STAFF_ID=$3&terminateStaffNowDone [QSA]
+
+#RewriteRule ^[a-zA-Z]+([0-9]+)/([A-Z]+)/staff/([0-9]+)/contract$ index.php?SERV=$1&action=staff_view&tab=contract&LANG=$2&GET_STAFF_ID=$3 [QSA]
+#RewriteRule ^[a-zA-Z]+([0-9]+)/([A-Z]+)/staff/([0-9]+)/contract/$ index.php?SERV=$1&action=staff_view&tab=contract&LANG=$2&GET_STAFF_ID=$3 [QSA]
+
+RewriteRule ^[a-zA-Z]+([0-9]+)/([A-Z]+)/staff/([0-9]+)/transfer$ index.php?SERV=$1&action=staff_view&LANG=$2&tab=transfer&GET_STAFF_ID=$3 [QSA] 
+RewriteRule ^[a-zA-Z]+([0-9]+)/([A-Z]+)/staff/([0-9]+)/done$ index.php?SERV=$1&action=staff_view&LANG=$2&tab=profile&GET_STAFF_ID=$3&OptionDone [QSA]
+RewriteRule ^[a-zA-Z]+([0-9]+)/([A-Z]+)/staff/([0-9]+)/error$ index.php?SERV=$1&action=staff_view&LANG=$2&tab=profile&GET_STAFF_ID=$3&OptionError [QSA]
+RewriteRule ^[a-zA-Z]+([0-9]+)/([A-Z]+)/staff/([0-9]+)/warning$ index.php?SERV=$1&action=staff_view&LANG=$2&tab=profile&GET_STAFF_ID=$3&OptionWarning [QSA]
+
+
+RewriteRule ^[a-zA-Z]+([0-9]+)/([A-Z]+)/staff/([0-9]+)/travel$ index.php?SERV=$1&action=staff_view&tab=travel&LANG=$2&GET_STAFF_ID=$3 [QSA]
+RewriteRule ^[a-zA-Z]+([0-9]+)/([A-Z]+)/staff/([0-9]+)/travel/$ index.php?SERV=$1&action=staff_view&tab=travel&LANG=$2&GET_STAFF_ID=$3 [QSA]
+RewriteRule ^[a-zA-Z]+([0-9]+)/([A-Z]+)/staff/([0-9]+)/travel/done$ index.php?SERV=$1&action=staff_view&tab=travel&LANG=$2&GET_STAFF_ID=$3&OptionDone [QSA]
+RewriteRule ^[a-zA-Z]+([0-9]+)/([A-Z]+)/staff/([0-9]+)/travel/error$ index.php?SERV=$1&action=staff_view&tab=travel&LANG=$2&GET_STAFF_ID=$3&OptionError [QSA]
+RewriteRule ^[a-zA-Z]+([0-9]+)/([A-Z]+)/staff/([0-9]+)/training$ index.php?SERV=$1&action=staff_view&tab=training&LANG=$2&GET_STAFF_ID=$3 [QSA]
+RewriteRule ^[a-zA-Z]+([0-9]+)/([A-Z]+)/staff/([0-9]+)/training/$ index.php?SERV=$1&action=staff_view&tab=training&LANG=$2&GET_STAFF_ID=$3 [QSA]
+RewriteRule ^[a-zA-Z]+([0-9]+)/([A-Z]+)/staff/([0-9]+)/training/done$ index.php?SERV=$1&action=staff_view&tab=training&LANG=$2&GET_STAFF_ID=$3&OptionDone [QSA]
+RewriteRule ^[a-zA-Z]+([0-9]+)/([A-Z]+)/staff/([0-9]+)/training/error$ index.php?SERV=$1&action=staff_view&tab=training&LANG=$2&GET_STAFF_ID=$3&OptionError [QSA]
+##### PRACOWNICY - END
+
+##### PRACOWNICY - BEGIN
+RewriteRule ^[a-zA-Z]+([0-9]+)/([A-Z]+)/invitations$ index.php?SERV=$1&action=invitions&LANG=$2 [QSA]
+RewriteRule ^[a-zA-Z]+([0-9]+)/([A-Z]+)/invitations/$ index.php?SERV=$1&action=invitions&LANG=$2 [QSA]
+##### PRACOWNICY - END
+
+##### RANKING GRACZY - BEGIN
+RewriteRule ^[a-zA-Z]+([0-9]+)/([A-Z]+)/rankings$ index.php?SERV=$1&action=rankings&LANG=$2 [QSA]
+RewriteRule ^[a-zA-Z]+([0-9]+)/([A-Z]+)/rankings/$ index.php?SERV=$1&action=rankings&LANG=$2 [QSA]
+RewriteRule ^[a-zA-Z]+([0-9]+)/([A-Z]+)/rankings/users$ index.php?SERV=$1&action=rankings&tab=users&LANG=$2 [QSA]
+RewriteRule ^[a-zA-Z]+([0-9]+)/([A-Z]+)/rankings/users/$ index.php?SERV=$1&action=rankings&tab=users&LANG=$2 [QSA]
+RewriteRule ^[a-zA-Z]+([0-9]+)/([A-Z]+)/rankings/users/([0-9]+)$ index.php?SERV=$1&action=rankings&tab=users&LANG=$2&page=$3 [QSA]
+RewriteRule ^[a-zA-Z]+([0-9]+)/([A-Z]+)/rankings/users/([0-9]+)/$ index.php?SERV=$1&action=rankings&tab=users&LANG=$2&page=$3 [QSA]
+RewriteRule ^[a-zA-Z]+([0-9]+)/([A-Z]+)/rankings/teams$ index.php?SERV=$1&action=rankings&tab=teams&LANG=$2 [QSA]
+RewriteRule ^[a-zA-Z]+([0-9]+)/([A-Z]+)/rankings/teams/$ index.php?SERV=$1&action=rankings&tab=teams&LANG=$2 [QSA]
+RewriteRule ^[a-zA-Z]+([0-9]+)/([A-Z]+)/rankings/teams/([0-9]+)$ index.php?SERV=$1&action=rankings&tab=teams&LANG=$2&page=$3 [QSA]
+RewriteRule ^[a-zA-Z]+([0-9]+)/([A-Z]+)/rankings/teams/([0-9]+)/$ index.php?SERV=$1&action=rankings&tab=teams&LANG=$2&page=$3 [QSA]
+
+RewriteRule ^[a-zA-Z]+([0-9]+)/([A-Z]+)/rankings/teams/users$ index.php?SERV=$1&action=rankings&tab=teams&LANG=$2&option=users [QSA]
+RewriteRule ^[a-zA-Z]+([0-9]+)/([A-Z]+)/rankings/teams/users/$ index.php?SERV=$1&action=rankings&tab=teams&LANG=$2&option=users [QSA]
+RewriteRule ^[a-zA-Z]+([0-9]+)/([A-Z]+)/rankings/teams/users/([0-9]+)$ index.php?SERV=$1&action=rankings&tab=teams&LANG=$2&page=$3&option=users [QSA]
+RewriteRule ^[a-zA-Z]+([0-9]+)/([A-Z]+)/rankings/teams/users/([0-9]+)/$ index.php?SERV=$1&action=rankings&tab=teams&LANG=$2&page=$3&option=users [QSA]
+
+
+RewriteRule ^[a-zA-Z]+([0-9]+)/([A-Z]+)/rankings/countries$ index.php?SERV=$1&action=rankings&tab=countries&LANG=$2 [QSA]
+RewriteRule ^[a-zA-Z]+([0-9]+)/([A-Z]+)/rankings/countries/$ index.php?SERV=$1&action=rankings&tab=countries&LANG=$2 [QSA]
+RewriteRule ^[a-zA-Z]+([0-9]+)/([A-Z]+)/rankings/countries/([0-9]+)$ index.php?SERV=$1&action=rankings&tab=countries&LANG=$2&page=$3 [QSA]
+RewriteRule ^[a-zA-Z]+([0-9]+)/([A-Z]+)/rankings/countries/([0-9]+)/$ index.php?SERV=$1&action=rankings&tab=countries&LANG=$2&page=$3 [QSA]
+##### RANKING GRACZY - END
+
+
+#### ZNAJOMI - BEGIN
+
+RewriteRule ^[a-zA-Z]+([0-9]+)/([A-Z]+)/user/([0-9]+)$ index.php?SERV=$1&action=user_view&LANG=$2&GET_USER_ID=$3 [QSA]
+RewriteRule ^[a-zA-Z]+([0-9]+)/([A-Z]+)/user/([0-9]+)/$ index.php?SERV=$1&action=user_view&LANG=$2&GET_USER_ID=$3 [QSA]
+RewriteRule ^[a-zA-Z]+([0-9]+)/([A-Z]+)/user/([0-9]+)/delete$ index.php?SERV=$1&action=user_view&LANG=$2&GET_USER_ID=$3&optionDelete [QSA]
+RewriteRule ^[a-zA-Z]+([0-9]+)/([A-Z]+)/user/([0-9]+)/friends$ index.php?SERV=$1&action=user_view&option=friends&LANG=$2&GET_USER_ID=$3 [QSA]
+RewriteRule ^[a-zA-Z]+([0-9]+)/([A-Z]+)/user/([0-9]+)/friends/$ index.php?SERV=$1&action=user_view&option=friends&LANG=$2&GET_USER_ID=$3 [QSA]
+RewriteRule ^[a-zA-Z]+([0-9]+)/([A-Z]+)/friends$ index.php?SERV=$1&action=user_view&option=friends&LANG=$2 [QSA]
+RewriteRule ^[a-zA-Z]+([0-9]+)/([A-Z]+)/friends/$ index.php?SERV=$1&action=user_view&option=friends&LANG=$2 [QSA]
+
+#### ZNAJOMI - END
+
+#### WYLOGOWANIE SIE - BEGIN
+RewriteRule ^[a-zA-Z]+([0-9]+)/([A-Z]+)/logout$ index.php?SERV=$1&LANG=$2&wyloguj [QSA]
+RewriteRule ^[a-zA-Z]+([0-9]+)/([A-Z]+)/logout/$ index.php?SERV=$1&LANG=$2&wyloguj [QSA]
+#### WYLOGOWANIE SIE - END
+
+#### SKRZYNKA PRYWATNYCH WIADOMOSCI - BEGIN
+RewriteRule ^[a-zA-Z]+([0-9]+)/([A-Z]+)/mail$ index.php?SERV=$1&PAGE_MAIL&LANG=$2 [QSA]
+RewriteRule ^[a-zA-Z]+([0-9]+)/([A-Z]+)/mail/$ index.php?SERV=$1&PAGE_MAIL&LANG=$2 [QSA]
+RewriteRule ^[a-zA-Z]+([0-9]+)/([A-Z]+)/mail/([0-9]+)$ index.php?SERV=$1&PAGE_MAIL&option=mail_open&LANG=$2&MAIL_ID=$3 [QSA]
+RewriteRule ^[a-zA-Z]+([0-9]+)/([A-Z]+)/mail/([0-9]+)/$ index.php?SERV=$1&PAGE_MAIL&option=mail_open&LANG=$2&MAIL_ID=$3 [QSA]
+RewriteRule ^[a-zA-Z]+([0-9]+)/([A-Z]+)/mail/([0-9]+)/reply$ index.php?SERV=$1&PAGE_MAIL&option=mail_open&OptionSend&LANG=$2&MAIL_ID=$3 [QSA]
+RewriteRule ^[a-zA-Z]+([0-9]+)/([A-Z]+)/mail/new$ index.php?SERV=$1&PAGE_MAIL&option=new&LANG=$2 [QSA]
+RewriteRule ^[a-zA-Z]+([0-9]+)/([A-Z]+)/mail/new/$ index.php?SERV=$1&PAGE_MAIL&option=new&LANG=$2 [QSA]
+RewriteRule ^[a-zA-Z]+([0-9]+)/([A-Z]+)/mail/new/send$ index.php?SERV=$1&PAGE_MAIL&option=new&OptionSend&LANG=$2 [QSA]
+RewriteRule ^[a-zA-Z]+([0-9]+)/([A-Z]+)/mail/new/send/$ index.php?SERV=$1&PAGE_MAIL&option=new&OptionSend&LANG=$2 [QSA]
+
+RewriteRule ^[a-zA-Z]+([0-9]+)/([A-Z]+)/mail/newPW/([0-9]+)$ index.php?SERV=$1&PAGE_MAIL&option=new&userPW=$3&LANG=$2 [QSA]
+RewriteRule ^[a-zA-Z]+([0-9]+)/([A-Z]+)/mail/newPW/([0-9]+)/$ index.php?SERV=$1&PAGE_MAIL&option=new&userPW=$3&LANG=$2 [QSA]
+RewriteRule ^[a-zA-Z]+([0-9]+)/([A-Z]+)/mail/newPW/([0-9]+)/send$ index.php?SERV=$1&PAGE_MAIL&option=new&userPW=$3&OptionSend&LANG=$2 [QSA]
+RewriteRule ^[a-zA-Z]+([0-9]+)/([A-Z]+)/mail/newPW/([0-9]+)/send/$ index.php?SERV=$1&PAGE_MAIL&option=new&userPW=$3&OptionSend&LANG=$2 [QSA]
+
+
+RewriteRule ^[a-zA-Z]+([0-9]+)/([A-Z]+)/mail/inbox$ index.php?SERV=$1&PAGE_MAIL&option=inbox&LANG=$2 [QSA]
+RewriteRule ^[a-zA-Z]+([0-9]+)/([A-Z]+)/mail/inbox/$ index.php?SERV=$1&PAGE_MAIL&option=inbox&LANG=$2 [QSA]
+RewriteRule ^[a-zA-Z]+([0-9]+)/([A-Z]+)/mail/inbox/([0-9]+)$ index.php?SERV=$1&PAGE_MAIL&option=inbox&LANG=$2&page=$3 [QSA]
+RewriteRule ^[a-zA-Z]+([0-9]+)/([A-Z]+)/mail/inbox/([0-9]+)/$ index.php?SERV=$1&PAGE_MAIL&option=inbox&LANG=$2&page=$3 [QSA]
+RewriteRule ^[a-zA-Z]+([0-9]+)/([A-Z]+)/mail/inbox/([0-9]+)/done$ index.php?SERV=$1&PAGE_MAIL&option=inbox&LANG=$2&page=$3&OptionDone [QSA]
+RewriteRule ^[a-zA-Z]+([0-9]+)/([A-Z]+)/mail/saves$ index.php?SERV=$1&PAGE_MAIL&option=saves&LANG=$2 [QSA]
+RewriteRule ^[a-zA-Z]+([0-9]+)/([A-Z]+)/mail/saves/$ index.php?SERV=$1&PAGE_MAIL&option=saves&LANG=$2 [QSA]
+RewriteRule ^[a-zA-Z]+([0-9]+)/([A-Z]+)/mail/saves/([0-9]+)$ index.php?SERV=$1&PAGE_MAIL&option=saves&LANG=$2&page=$3 [QSA]
+RewriteRule ^[a-zA-Z]+([0-9]+)/([A-Z]+)/mail/saves/([0-9]+)/$ index.php?SERV=$1&PAGE_MAIL&option=saves&LANG=$2&page=$3 [QSA]
+RewriteRule ^[a-zA-Z]+([0-9]+)/([A-Z]+)/mail/saves/([0-9]+)/done$ index.php?SERV=$1&PAGE_MAIL&option=saves&LANG=$2&page=$3&OptionDone [QSA]
+
+RewriteRule ^[a-zA-Z]+([0-9]+)/([A-Z]+)/mail/outbox$ index.php?SERV=$1&PAGE_MAIL&option=outbox&LANG=$2 [QSA]
+RewriteRule ^[a-zA-Z]+([0-9]+)/([A-Z]+)/mail/outbox/$ index.php?SERV=$1&PAGE_MAIL&option=outbox&LANG=$2 [QSA]
+RewriteRule ^[a-zA-Z]+([0-9]+)/([A-Z]+)/mail/outbox/([0-9]+)$ index.php?SERV=$1&PAGE_MAIL&option=outbox&LANG=$2&page=$3 [QSA]
+RewriteRule ^[a-zA-Z]+([0-9]+)/([A-Z]+)/mail/outbox/([0-9]+)/$ index.php?SERV=$1&PAGE_MAIL&option=outbox&LANG=$2&page=$3 [QSA]
+RewriteRule ^[a-zA-Z]+([0-9]+)/([A-Z]+)/mail/outbox/([0-9]+)/done$ index.php?SERV=$1&PAGE_MAIL&option=outbox&LANG=$2&page=$3&OptionDone [QSA]
+RewriteRule ^[a-zA-Z]+([0-9]+)/([A-Z]+)/mail/trash$ index.php?SERV=$1&PAGE_MAIL&option=trash&LANG=$2 [QSA]
+RewriteRule ^[a-zA-Z]+([0-9]+)/([A-Z]+)/mail/trash/$ index.php?SERV=$1&PAGE_MAIL&option=trash&LANG=$2 [QSA]
+RewriteRule ^[a-zA-Z]+([0-9]+)/([A-Z]+)/mail/trash/([0-9]+)$ index.php?SERV=$1&PAGE_MAIL&option=trash&LANG=$2&page=$3 [QSA]
+RewriteRule ^[a-zA-Z]+([0-9]+)/([A-Z]+)/mail/trash/([0-9]+)/$ index.php?SERV=$1&PAGE_MAIL&option=trash&LANG=$2&page=$3 [QSA]
+RewriteRule ^[a-zA-Z]+([0-9]+)/([A-Z]+)/mail/trash/([0-9]+)/done$ index.php?SERV=$1&PAGE_MAIL&option=trash&LANG=$2&page=$3&OptionDone [QSA]
+#
+RewriteRule ^[a-zA-Z]+([0-9]+)/([A-Z]+)/PAGE/([a-z0-9_]+)$ index.php?SERV=$1&action=page_read&LANG=$2&PAGE=$3&TITLE=$4 [QSA]
+RewriteRule ^[a-zA-Z]+([0-9]+)/([A-Z]+)/PAGE/([a-z0-9_]+)/$ index.php?SERV=$1&action=page_read&LANG=$2&PAGE=$3&TITLE=$4 [QSA]
+
+RewriteRule ^([A-Z]+)/PAGE/([a-z0-9_]+)$ index.php?&action=page_read&LANG=$1&PAGE=$2&TITLE=$3 [QSA]
+RewriteRule ^([A-Z]+)/PAGE/([a-z0-9_]+)/$ index.php?action=page_read&LANG=$1&PAGE=$2&TITLE=$3 [QSA]
+
+
+# niezbedne dla unikalnych nazw w menu
+RewriteRule ^([A-Z]+)/([a-z0-9_]+)$ index.php?action=page_read&LANG=$1&PAGE=$2 [QSA]
+#RewriteRule ^([A-Z]+)/([a-z0-9_]+)/([a-z0-9_]+)$ index.php?action=page_read&LANG=$1&PAGE=$2 [QSA]
+
+#### SEARCH
+
+RewriteRule ^[a-zA-Z]+([0-9]+)/([A-Z]+)/SEARCH/map/([a-z]+)/$ index.php?SERV=$1&action=page_search&searchType=map&LANG=$2&search_options=$3 [QSA]
+
+RewriteRule ^[a-zA-Z]+([0-9]+)/([A-Z]+)/SEARCH/map/([0-9]+)/([a-z]+)/([a-z,-]+)$ index.php?SERV=$1&action=page_search&searchType=map&LANG=$2&page=$3&search_options=$4&queryMap=$5 [QSA]
+
+RewriteRule ^[a-zA-Z]+([0-9]+)/([A-Z]+)/SEARCH/map/([a-z]+)/([a-z,-]+)$ index.php?SERV=$1&action=page_search&searchType=map&LANG=$2&search_options=$3&queryMap=$4 [QSA]
+
+
+RewriteRule ^[a-zA-Z]+([0-9]+)/([A-Z]+)/SEARCH$ index.php?SERV=$1&action=page_search&searchType=all&LANG=$2 [QSA]
+RewriteRule ^[a-zA-Z]+([0-9]+)/([A-Z]+)/SEARCH/$ index.php?SERV=$1&action=page_search&searchType=all&LANG=$2 [QSA]
+
+RewriteRule ^[a-zA-Z]+([0-9]+)/([A-Z]+)/SEARCH/([a-zA-Z0-9_+~]+)$ index.php?SERV=$1&action=page_search&searchType=all&LANG=$2&query=$3 [QSA]
+RewriteRule ^[a-zA-Z]+([0-9]+)/([A-Z]+)/SEARCH/([a-zA-Z0-9_+~]+)/([a-z,]+)$ index.php?SERV=$1&action=page_search&searchType=all&LANG=$2&query=$3&options=$4 [QSA]
+RewriteRule ^[a-zA-Z]+([0-9]+)/([A-Z]+)/SEARCH/([0-9]+)/([a-zA-Z0-9_+~]+)/([a-z,]+)$ index.php?SERV=$1&action=page_search&searchType=all&LANG=$2&query=$4&options=$5&page=$3 [QSA]
+
+
+#RewriteRule ^[a-zA-Z]+([0-9]+)/([A-Z]+)/SEARCH/([a-zA-Z0-9_+~]+)$ index.php?SERV=$1&action=page_search&searchType=all&LANG=$2&query=$3 [QSA]
+#RewriteRule ^[a-zA-Z]+([0-9]+)/([A-Z]+)/SEARCH$ index.php?SERV=$1&action=page_search&searchType=all&LANG=$2 [QSA]
+#RewriteRule ^[a-zA-Z]+([0-9]+)/([A-Z]+)/SEARCH/users/([a-zA-Z0-9_+~]+)$ index.php?SERV=$1&action=page_search&searchType=users&LANG=$2&query=$3 [QSA]
+#RewriteRule ^[a-zA-Z]+([0-9]+)/([A-Z]+)/SEARCH/users/$ index.php?SERV=$1&action=page_search&searchType=users&LANG=$2 [QSA]
+#RewriteRule ^[a-zA-Z]+([0-9]+)/([A-Z]+)/SEARCH/users$ index.php?SERV=$1&action=page_search&searchType=users&LANG=$2 [QSA]
+#RewriteRule ^[a-zA-Z]+([0-9]+)/([A-Z]+)/SEARCH/players/([a-zA-Z0-9_+~]+)$ index.php?SERV=$1&action=page_search&searchType=players&LANG=$2&query=$3 [QSA]
+#RewriteRule ^[a-zA-Z]+([0-9]+)/([A-Z]+)/SEARCH/players/$ index.php?SERV=$1&action=page_search&searchType=players&LANG=$2 [QSA]
+#RewriteRule ^[a-zA-Z]+([0-9]+)/([A-Z]+)/SEARCH/players$ index.php?SERV=$1&action=page_search&searchType=players&LANG=$2 [QSA]
+#RewriteRule ^[a-zA-Z]+([0-9]+)/([A-Z]+)/SEARCH/teams/([a-zA-Z0-9_+~]+)$ index.php?SERV=$1&action=page_search&searchType=teams&LANG=$2&query=$3 [QSA]
+#RewriteRule ^[a-zA-Z]+([0-9]+)/([A-Z]+)/SEARCH/teams/$ index.php?SERV=$1&action=page_search&searchType=teams&LANG=$2 [QSA]
+#RewriteRule ^[a-zA-Z]+([0-9]+)/([A-Z]+)/SEARCH/teams$ index.php?SERV=$1&action=page_search&searchType=teams&LANG=$2 [QSA]
+#RewriteRule ^[a-zA-Z]+([0-9]+)/([A-Z]+)/SEARCH/countries/([a-zA-Z0-9_+~]+)$ index.php?SERV=$1&action=page_search&searchType=countries&LANG=$2&query=$3 [QSA]
+#RewriteRule ^[a-zA-Z]+([0-9]+)/([A-Z]+)/SEARCH/countries/$ index.php?SERV=$1&action=page_search&searchType=countries&LANG=$2 [QSA]
+#RewriteRule ^[a-zA-Z]+([0-9]+)/([A-Z]+)/SEARCH/countries$ index.php?SERV=$1&action=page_search&searchType=countries&LANG=$2 [QSA]
+#RewriteRule ^[a-zA-Z]+([0-9]+)/([A-Z]+)/SEARCH/games/([a-zA-Z0-9_+~]+)$ index.php?SERV=$1&action=page_search&searchType=games&LANG=$2&query=$3 [QSA]
+#RewriteRule ^[a-zA-Z]+([0-9]+)/([A-Z]+)/SEARCH/games/$ index.php?SERV=$1&action=page_search&searchType=games&LANG=$2 [QSA]
+#RewriteRule ^[a-zA-Z]+([0-9]+)/([A-Z]+)/SEARCH/games$ index.php?SERV=$1&action=page_search&searchType=games&LANG=$2 [QSA]
+#RewriteRule ^[a-zA-Z]+([0-9]+)/([A-Z]+)/SEARCH/staff/([a-zA-Z0-9_+~]+)$ index.php?SERV=$1&action=page_search&searchType=staff&LANG=$2&query=$3 [QSA]
+#RewriteRule ^[a-zA-Z]+([0-9]+)/([A-Z]+)/SEARCH/staff/$ index.php?SERV=$1&action=page_search&searchType=staff&LANG=$2 [QSA]
+#RewriteRule ^[a-zA-Z]+([0-9]+)/([A-Z]+)/SEARCH/staff$ index.php?SERV=$1&action=page_search&searchType=staff&LANG=$2 [QSA]
+
+#### SEARCH - page
+
+#RewriteRule ^[a-zA-Z]+([0-9]+)/([A-Z]+)/SEARCH/([0-9]+)/([a-zA-Z0-9_+~]+)$ index.php?SERV=$1&action=page_search&searchType=all&LANG=$2&query=$4&page=$3 [QSA]
+#RewriteRule ^[a-zA-Z]+([0-9]+)/([A-Z]+)/SEARCH/([0-9]+)/$ index.php?SERV=$1&action=page_search&searchType=all&LANG=$2&page=$3 [QSA]
+#RewriteRule ^[a-zA-Z]+([0-9]+)/([A-Z]+)/SEARCH/([0-9]+)$ index.php?SERV=$1&action=page_search&searchType=all&LANG=$2&page=$3 [QSA]
+#RewriteRule ^[a-zA-Z]+([0-9]+)/([A-Z]+)/SEARCH/([0-9]+)/users/([a-zA-Z0-9_+~]+)$ index.php?SERV=$1&action=page_search&searchType=users&LANG=$2&query=$4&page=$3 [QSA]
+#RewriteRule ^[a-zA-Z]+([0-9]+)/([A-Z]+)/SEARCH/([0-9]+)/users/$ index.php?SERV=$1&action=page_search&searchType=users&LANG=$2&page=$3 [QSA]
+#RewriteRule ^[a-zA-Z]+([0-9]+)/([A-Z]+)/SEARCH/([0-9]+)/users$ index.php?SERV=$1&action=page_search&searchType=users&LANG=$2&page=$3 [QSA]
+#RewriteRule ^[a-zA-Z]+([0-9]+)/([A-Z]+)/SEARCH/([0-9]+)/players/([a-zA-Z0-9_+~]+)$ index.php?SERV=$1&action=page_search&searchType=players&LANG=$2&query=$4&page=$3 [QSA]
+#RewriteRule ^[a-zA-Z]+([0-9]+)/([A-Z]+)/SEARCH/([0-9]+)/players/$ index.php?SERV=$1&action=page_search&searchType=players&LANG=$2&page=$4 [QSA]
+#RewriteRule ^[a-zA-Z]+([0-9]+)/([A-Z]+)/SEARCH/([0-9]+)/players$ index.php?SERV=$1&action=page_search&searchType=players&LANG=$2&page=$4 [QSA]
+#RewriteRule ^[a-zA-Z]+([0-9]+)/([A-Z]+)/SEARCH/([0-9]+)/teams/([a-zA-Z0-9_+~]+)$ index.php?SERV=$1&action=page_search&searchType=teams&LANG=$2&query=$4&page=$3 [QSA]
+#RewriteRule ^[a-zA-Z]+([0-9]+)/([A-Z]+)/SEARCH/([0-9]+)/teams/$ index.php?SERV=$1&action=page_search&searchType=teams&LANG=$2&page=$3 [QSA]
+#RewriteRule ^[a-zA-Z]+([0-9]+)/([A-Z]+)/SEARCH/([0-9]+)/teams$ index.php?SERV=$1&action=page_search&searchType=teams&LANG=$2&page=$3 [QSA]
+#RewriteRule ^[a-zA-Z]+([0-9]+)/([A-Z]+)/SEARCH/([0-9]+)/countries/([a-zA-Z0-9_+~]+)$ index.php?SERV=$1&action=page_search&searchType=countries&LANG=$2&query=$4&page=$3 [QSA]
+#RewriteRule ^[a-zA-Z]+([0-9]+)/([A-Z]+)/SEARCH/([0-9]+)/countries/$ index.php?SERV=$1&action=page_search&searchType=countries&LANG=$2&page=$3 [QSA]
+#RewriteRule ^[a-zA-Z]+([0-9]+)/([A-Z]+)/SEARCH/([0-9]+)/countries$ index.php?SERV=$1&action=page_search&searchType=countries&LANG=$2&page=$3 [QSA]
+#RewriteRule ^[a-zA-Z]+([0-9]+)/([A-Z]+)/SEARCH/([0-9]+)/games/([a-zA-Z0-9_+~]+)$ index.php?SERV=$1&action=page_search&searchType=games&LANG=$2&query=$4&page=$3 [QSA]
+#RewriteRule ^[a-zA-Z]+([0-9]+)/([A-Z]+)/SEARCH/([0-9]+)/games/$ index.php?SERV=$1&action=page_search&searchType=games&LANG=$2&page=$3 [QSA]
+#RewriteRule ^[a-zA-Z]+([0-9]+)/([A-Z]+)/SEARCH/([0-9]+)/games$ index.php?SERV=$1&action=page_search&searchType=games&LANG=$2&page=$3 [QSA]
+#RewriteRule ^[a-zA-Z]+([0-9]+)/([A-Z]+)/SEARCH/([0-9]+)/staff/([a-zA-Z0-9_+~]+)$ index.php?SERV=$1&action=page_search&searchType=staff&LANG=$2&query=$4&page=$3 [QSA]
+#RewriteRule ^[a-zA-Z]+([0-9]+)/([A-Z]+)/SEARCH/([0-9]+)/staff/$ index.php?SERV=$1&action=page_search&searchType=staff&LANG=$2&page=$3 [QSA]
+#RewriteRule ^[a-zA-Z]+([0-9]+)/([A-Z]+)/SEARCH/([0-9]+)/staff$ index.php?SERV=$1&action=page_search&searchType=staff&LANG=$2&page=$3 [QSA]
+
+####
+
+##### CREATE - BEGIN
+RewriteRule ^[a-zA-Z]+([0-9]+)/([A-Z]+)/create/team$ index.php?SERV=$1&action=create_team&LANG=$2 [QSA]
+RewriteRule ^[a-zA-Z]+([0-9]+)/([A-Z]+)/create/team/$ index.php?SERV=$1&action=create_team&LANG=$2 [QSA]
+RewriteRule ^[a-zA-Z]+([0-9]+)/([A-Z]+)/create/team/stage/([0-9]){1}$ index.php?SERV=$1&action=create_team&LANG=$2&stageOption=$3 [QSA]
+RewriteRule ^[a-zA-Z]+([0-9]+)/([A-Z]+)/create/team/stage/([0-9]){1}/warning/2$ index.php?SERV=$1&action=create_team&LANG=$2&stageOption=$3&WarningInfo2 [QSA]
+RewriteRule ^[a-zA-Z]+([0-9]+)/([A-Z]+)/create/team/stage/([0-9]){1}/warning/2/$ index.php?SERV=$1&action=create_team&LANG=$2&stageOption=$3&WarningInfo2 [QSA]
+RewriteRule ^[a-zA-Z]+([0-9]+)/([A-Z]+)/create/team/stage/([0-9]){1}/warning/1$ index.php?SERV=$1&action=create_team&LANG=$2&stageOption=$3&WarningInfo1 [QSA]
+RewriteRule ^[a-zA-Z]+([0-9]+)/([A-Z]+)/create/team/stage/([0-9]){1}/warning/1/$ index.php?SERV=$1&action=create_team&LANG=$2&stageOption=$3&WarningInfo1 [QSA]
+RewriteRule ^[a-zA-Z]+([0-9]+)/([A-Z]+)/create/team/stage/([0-9]){1}/warning/3$ index.php?SERV=$1&action=create_team&LANG=$2&stageOption=$3&WarningInfo3 [QSA]
+RewriteRule ^[a-zA-Z]+([0-9]+)/([A-Z]+)/create/team/stage/([0-9]){1}/warning/3/$ index.php?SERV=$1&action=create_team&LANG=$2&stageOption=$3&WarningInfo3 [QSA]
+RewriteRule ^[a-zA-Z]+([0-9]+)/([A-Z]+)/create/team/stage/([0-9]){1}/warning/4$ index.php?SERV=$1&action=create_team&LANG=$2&stageOption=$3&WarningInfo4 [QSA]
+RewriteRule ^[a-zA-Z]+([0-9]+)/([A-Z]+)/create/team/stage/([0-9]){1}/warning/4/$ index.php?SERV=$1&action=create_team&LANG=$2&stageOption=$3&WarningInfo4 [QSA]
+RewriteRule ^[a-zA-Z]+([0-9]+)/([A-Z]+)/create/team/complete$ index.php?SERV=$1&action=create_team&LANG=$2&stageOption=done [QSA]
+RewriteRule ^[a-zA-Z]+([0-9]+)/([A-Z]+)/create/team/error$ index.php?SERV=$1&action=create_team&LANG=$2&stageOption=error [QSA]
+#####
+
+
+##### PANEL UZYTKOWNIKA - BEGIN
+RewriteRule ^[a-zA-Z]+([0-9]+)/([A-Z]+)/user_panel$ index.php?SERV=$1&action=user_panel&LANG=$2 [QSA]
+RewriteRule ^[a-zA-Z]+([0-9]+)/([A-Z]+)/user_panel/$ index.php?SERV=$1&action=user_panel&LANG=$2 [QSA]
+
+#kody rabatowe
+RewriteRule ^[a-zA-Z]+([0-9]+)/([A-Z]+)/user_panel/discounts$ index.php?SERV=$1&action=user_panel&option=discounts&LANG=$2 [QSA]
+RewriteRule ^[a-zA-Z]+([0-9]+)/([A-Z]+)/user_panel/discounts/$ index.php?SERV=$1&action=user_panel&option=discounts&LANG=$2 [QSA]
+
+#akcje promocyjne
+RewriteRule ^[a-zA-Z]+([0-9]+)/([A-Z]+)/user_panel/actions$ index.php?SERV=$1&action=user_panel&option=actions&LANG=$2 [QSA]
+RewriteRule ^[a-zA-Z]+([0-9]+)/([A-Z]+)/user_panel/actions/$ index.php?SERV=$1&action=user_panel&option=actions&LANG=$2 [QSA]
+
+#wyroznianie uzytkownika
+RewriteRule ^[a-zA-Z]+([0-9]+)/([A-Z]+)/user_panel/award$ index.php?SERV=$1&action=user_panel&option=award&LANG=$2 [QSA]
+RewriteRule ^[a-zA-Z]+([0-9]+)/([A-Z]+)/user_panel/award/$ index.php?SERV=$1&action=user_panel&option=award&LANG=$2 [QSA]
+RewriteRule ^[a-zA-Z]+([0-9]+)/([A-Z]+)/user_panel/award/done$ index.php?SERV=$1&action=user_panel&option=award&LANG=$2&OptionDone [QSA]
+RewriteRule ^[a-zA-Z]+([0-9]+)/([A-Z]+)/user_panel/award/error$ index.php?SERV=$1&action=user_panel&option=award&LANG=$2&OptionError [QSA]
+
+
+#polecanie gry
+RewriteRule ^[a-zA-Z]+([0-9]+)/([A-Z]+)/user_panel/share$ index.php?SERV=$1&action=user_panel&option=share&LANG=$2 [QSA]
+RewriteRule ^[a-zA-Z]+([0-9]+)/([A-Z]+)/user_panel/share/$ index.php?SERV=$1&action=user_panel&option=share&LANG=$2 [QSA]
+RewriteRule ^[a-zA-Z]+([0-9]+)/([A-Z]+)/user_panel/share/done$ index.php?SERV=$1&action=user_panel&option=share&LANG=$2&OptionDone [QSA]
+RewriteRule ^[a-zA-Z]+([0-9]+)/([A-Z]+)/user_panel/share/error$ index.php?SERV=$1&action=user_panel&option=share&LANG=$2&OptionError [QSA]
+
+#integracja z facebook
+RewriteRule ^[a-zA-Z]+([0-9]+)/([A-Z]+)/user_panel/facebook$ index.php?SERV=$1&action=user_panel&option=facebook&LANG=$2 [QSA]
+RewriteRule ^[a-zA-Z]+([0-9]+)/([A-Z]+)/user_panel/facebook/$ index.php?SERV=$1&action=user_panel&option=facebook&LANG=$2 [QSA]
+RewriteRule ^[a-zA-Z]+([0-9]+)/([A-Z]+)/user_panel/facebook/done$ index.php?SERV=$1&action=user_panel&option=facebook&LANG=$2&OptionDone [QSA]
+RewriteRule ^[a-zA-Z]+([0-9]+)/([A-Z]+)/user_panel/facebook/error$ index.php?SERV=$1&action=user_panel&option=facebook&LANG=$2&OptionError [QSA]
+
+#podstawowe informacje
+RewriteRule ^[a-zA-Z]+([0-9]+)/([A-Z]+)/user_panel/personal$ index.php?SERV=$1&action=user_panel&option=personal&LANG=$2 [QSA]
+RewriteRule ^[a-zA-Z]+([0-9]+)/([A-Z]+)/user_panel/personal/$ index.php?SERV=$1&action=user_panel&option=personal&LANG=$2 [QSA]
+RewriteRule ^[a-zA-Z]+([0-9]+)/([A-Z]+)/user_panel/personal/done$ index.php?SERV=$1&action=user_panel&option=personal&LANG=$2&OptionDone [QSA]
+RewriteRule ^[a-zA-Z]+([0-9]+)/([A-Z]+)/user_panel/personal/error$ index.php?SERV=$1&action=user_panel&option=personal&LANG=$2&OptionError [QSA]
+#zmiana hasla
+RewriteRule ^[a-zA-Z]+([0-9]+)/([A-Z]+)/user_panel/password$ index.php?SERV=$1&action=user_panel&option=password&LANG=$2 [QSA]
+RewriteRule ^[a-zA-Z]+([0-9]+)/([A-Z]+)/user_panel/password/$ index.php?SERV=$1&action=user_panel&option=password&LANG=$2 [QSA]
+RewriteRule ^[a-zA-Z]+([0-9]+)/([A-Z]+)/user_panel/password/done$ index.php?SERV=$1&action=user_panel&option=password&LANG=$2&OptionDone [QSA]
+RewriteRule ^[a-zA-Z]+([0-9]+)/([A-Z]+)/user_panel/password/error$ index.php?SERV=$1&action=user_panel&option=password&LANG=$2&OptionError [QSA]
+#zarzadzanie serwerami gry
+RewriteRule ^[a-zA-Z]+([0-9]+)/([A-Z]+)/user_panel/servers$ index.php?SERV=$1&action=user_panel&option=servers&LANG=$2 [QSA]
+RewriteRule ^[a-zA-Z]+([0-9]+)/([A-Z]+)/user_panel/servers/$ index.php?SERV=$1&action=user_panel&option=servers&LANG=$2 [QSA]
+RewriteRule ^[a-zA-Z]+([0-9]+)/([A-Z]+)/user_panel/servers/set/([0-9]+)$ index.php?SERV=$1&action=user_panel&option=servers&LANG=$2&getServerID=$3 [QSA]
+
+#ustawienia prywatnosci
+RewriteRule ^[a-zA-Z]+([0-9]+)/([A-Z]+)/user_panel/private$ index.php?SERV=$1&action=user_panel&option=private&LANG=$2 [QSA]
+RewriteRule ^[a-zA-Z]+([0-9]+)/([A-Z]+)/user_panel/private/$ index.php?SERV=$1&action=user_panel&option=private&LANG=$2 [QSA]
+#ustawienia systemowe
+RewriteRule ^[a-zA-Z]+([0-9]+)/([A-Z]+)/user_panel/system$ index.php?SERV=$1&action=user_panel&option=system&LANG=$2 [QSA]
+RewriteRule ^[a-zA-Z]+([0-9]+)/([A-Z]+)/user_panel/system/$ index.php?SERV=$1&action=user_panel&option=system&LANG=$2 [QSA]
+RewriteRule ^[a-zA-Z]+([0-9]+)/([A-Z]+)/user_panel/system/done$ index.php?SERV=$1&action=user_panel&option=system&LANG=$2&OptionDone [QSA]
+RewriteRule ^[a-zA-Z]+([0-9]+)/([A-Z]+)/user_panel/system/error$ index.php?SERV=$1&action=user_panel&option=system&LANG=$2&OptionError [QSA]
+#zarzadzanie reklamami
+RewriteRule ^[a-zA-Z]+([0-9]+)/([A-Z]+)/user_panel/ads$ index.php?SERV=$1&action=user_panel&option=ads&LANG=$2 [QSA]
+RewriteRule ^[a-zA-Z]+([0-9]+)/([A-Z]+)/user_panel/ads/$ index.php?SERV=$1&action=user_panel&option=ads&LANG=$2 [QSA]
+#dezaktywacja konta
+RewriteRule ^[a-zA-Z]+([0-9]+)/([A-Z]+)/user_panel/delete$ index.php?SERV=$1&action=user_panel&option=delete&LANG=$2 [QSA]
+RewriteRule ^[a-zA-Z]+([0-9]+)/([A-Z]+)/user_panel/delete/$ index.php?SERV=$1&action=user_panel&option=delete&LANG=$2 [QSA]
+#avatar
+RewriteRule ^[a-zA-Z]+([0-9]+)/([A-Z]+)/user_panel/avatar$ index.php?SERV=$1&action=user_panel&option=avatar&LANG=$2 [QSA]
+RewriteRule ^[a-zA-Z]+([0-9]+)/([A-Z]+)/user_panel/avatar/$ index.php?SERV=$1&action=user_panel&option=avatar&LANG=$2 [QSA]
+RewriteRule ^[a-zA-Z]+([0-9]+)/([A-Z]+)/user_panel/avatar/done$ index.php?SERV=$1&action=user_panel&option=avatar&LANG=$2&OptionDone [QSA]
+RewriteRule ^[a-zA-Z]+([0-9]+)/([A-Z]+)/user_panel/avatar/error/([0-9]+)$ index.php?SERV=$1&action=user_panel&option=avatar&LANG=$2&OptionError=$3 [QSA]
+RewriteRule ^[a-zA-Z]+([0-9]+)/([A-Z]+)/user_panel/avatar/crop$ index.php?SERV=$1&action=user_panel&option=avatar&LANG=$2&CropImage [QSA]
+RewriteRule ^[a-zA-Z]+([0-9]+)/([A-Z]+)/user_panel/avatar/crop/$ index.php?SERV=$1&action=user_panel&option=avatar&LANG=$2&CropImage [QSA]
+RewriteRule ^[a-zA-Z]+([0-9]+)/([A-Z]+)/user_panel/avatar/delete$ index.php?SERV=$1&action=user_panel&option=avatar&LANG=$2&DeleteImage [QSA]
+RewriteRule ^[a-zA-Z]+([0-9]+)/([A-Z]+)/user_panel/avatar/delete/$ index.php?SERV=$1&action=user_panel&option=avatar&LANG=$2&DeleteImage [QSA]
+##### PANEL UZYTKOWNIKA - END
+
+
+##### BLOG - BEGIN
+#link globalny
+#RewriteRule ^([A-Z]+)/blog$ index.php?&LANG=$1&PAGE_BLOG [QSA]
+#RewriteRule ^([A-Z]+)/blog/$ index.php?&LANG=$1&PAGE_BLOG [QSA]
+#link newsa
+RewriteRule ^([A-Z]+)/blog/([a-z0-9_]+)/([0-9]+)/([0-9]+)/([a-zA-Z0-9_-]+)$ index.php?LANG=$1&MONTH=$2&YEAR=$3&NEW_ID=$4&PAGE_BLOG [QSA]
+RewriteRule ^([A-Z]+)/blog/([a-z0-9_]+)/([0-9]+)/([0-9]+)/([a-zA-Z0-9_-]+)/$ index.php?LANG=$1&MONTH=$2&YEAR=$3&NEW_ID=$4&PAGE_BLOG [QSA]
+#link miesiaca
+RewriteRule ^([A-Z]+)/blog/([a-z0-9_]+)/([0-9]+)$ index.php?LANG=$1&MONTH=$2&YEAR=$3&PAGE_BLOG [QSA]
+RewriteRule ^([A-Z]+)/blog/([a-z0-9_]+)/([0-9]+)/$ index.php?LANG=$1&MONTH=$2&YEAR=$3&PAGE_BLOG [QSA]
+##### BLOG - END
+
+##### WALL - BEGIN
+#link globalny
+RewriteRule ^[a-zA-Z]+([0-9]+)/([A-Z]+)/wall$ index.php?SERV=$1&LANG=$3&PAGE_WALL [QSA]
+RewriteRule ^[a-zA-Z]+([0-9]+)/([A-Z]+)/wall/$ index.php?SERV=$1&LANG=$2&PAGE_WALL [QSA]
+RewriteRule ^[a-zA-Z]+([0-9]+)/([A-Z]+)/wall/([0-9]+)$ index.php?SERV=$1&LANG=$2&ARTICLE_ID=$3&PAGE_WALL [QSA]
+RewriteRule ^[a-zA-Z]+([0-9]+)/([A-Z]+)/wall/([0-9]+)/$ index.php?SERV=$1&LANG=$2&ARTICLE_ID=$3&PAGE_WALL [QSA]
+
+
+RewriteRule ^[a-zA-Z]+([0-9]+)/([A-Z]+)/assistant/enable$ index.php?SERV=$1&LANG=$2&assistant=1 [QSA]
+RewriteRule ^[a-zA-Z]+([0-9]+)/([A-Z]+)/assistant/disable$ index.php?SERV=$1&LANG=$2&assistant=0 [QSA]
+##### BLOG - END
+
+RewriteRule ^live_([0-9]+)_([a-zA-Z]+).json$ ajax/check_user_mail_now.php?id=$1&lang=$2 [QSA]
+
+
+
+RewriteRule ^captcha.png$ ajax/create_word.php [QSA]
+
+RewriteRule ^index.html$ index.php [QSA]
+
+DirectoryIndex index.php
